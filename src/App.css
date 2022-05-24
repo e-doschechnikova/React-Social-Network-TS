@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;700&display=swap");
+
 .app-wrapper {
   margin: 0 auto;
   display: grid;
@@ -8,6 +10,9 @@
   grid-auto-rows: 70px 1fr;
   grid-template-columns: 2fr 10fr;
   grid-gap: 10px;
+
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
 }
 
 .app-wrapper-content {

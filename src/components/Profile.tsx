@@ -1,9 +1,9 @@
 import React from "react";
-import "./Profile.module";
+import styles from "./Profile.module.css";
 
 export const Profile = () => {
   return (
-    <div className="content">
+    <div className={styles.content}>
       Main Content
       <div>
         <img
@@ -12,15 +12,16 @@ export const Profile = () => {
         />
       </div>
       <div>
-        {" "}
         Ava + description
         <img src="" alt="" />
       </div>
       <div>My post</div>
       <div>
         New Post
-        <div>post 1</div>
-        <div>post 2</div>
+        <div className={styles.post}>
+          <div className={styles.item}>post 1</div>
+          <div className={styles.item}>post 2</div>
+        </div>
       </div>
     </div>
   );

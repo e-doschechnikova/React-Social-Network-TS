@@ -1,22 +1,22 @@
 import React from "react";
-import "./Navbar.module";
+import styles from "./Navbar.module.css";
 
 export const Navbar = () => {
   return (
-    <nav className="nav">
-      <div className="item">
+    <nav className={styles.nav}>
+      <div className={`${styles.item} ${styles.active}`}>
         <a>Profile</a>
       </div>
-      <div className="item">
+      <div className={styles.item}>
         <a>Messages</a>
       </div>
-      <div className="item">
+      <div className={styles.item}>
         <a>News</a>
       </div>
-      <div className="item">
+      <div className={styles.item}>
         <a>Music</a>
       </div>
-      <div className="item">
+      <div className={styles.item}>
         <a>Setting</a>
       </div>
     </nav>

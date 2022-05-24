@@ -4,12 +4,22 @@
   padding: 20px;
 }
 
-.item a {
+.item {
+  color: #fafafa;
+  font-size: 25px;
+  text-decoration: none;
+}
+
+/* .item a {
   color: #fafafa;
   font-size: 25px;
   text-decoration: none;
 }
 
 .item a.active {
+  color: #4e5560;
+} */
+
+.item.active {
   color: #4e5560;
 }

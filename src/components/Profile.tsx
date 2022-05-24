@@ -1,4 +1,5 @@
 import React from "react";
+import "./Profile.module";
 
 export const Profile = () => {
   return (

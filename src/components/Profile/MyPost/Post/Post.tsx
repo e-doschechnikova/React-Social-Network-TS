@@ -9,6 +9,9 @@ export const Post = () => {
         alt="avatar"
       />
       post 1
+      <div>
+        <span>like</span>
+      </div>
     </div>
   );
 };

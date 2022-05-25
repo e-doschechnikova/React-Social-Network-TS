@@ -4,19 +4,17 @@ import { Post } from "./Post/Post";
 
 export const MyPost = () => {
   return (
-    <div className={styles.content}>
+    <div>
+      My post
       <div>
-        My post
-        <div>
-          <textarea></textarea>
-          <button>Add post</button>
-          <div className={styles.post}>
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-          </div>
+        <textarea></textarea>
+        <button>Add post</button>
+        <div className={styles.post}>
+          <Post />
+          <Post />
+          <Post />
+          <Post />
+          <Post />
         </div>
       </div>
     </div>

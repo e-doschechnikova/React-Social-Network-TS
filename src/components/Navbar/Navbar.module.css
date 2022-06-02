@@ -10,7 +10,7 @@
   text-decoration: none;
 }
 
-/* .item a {
+.item a {
   color: #fafafa;
   font-size: 25px;
   text-decoration: none;
@@ -18,8 +18,8 @@
 
 .item a.active {
   color: #4e5560;
-} */
-
-.item.active {
-  color: #4e5560;
 }
+
+/* .item.active {
+  color: #4e5560;
+} */

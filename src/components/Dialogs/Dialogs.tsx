@@ -1,3 +1,4 @@
+import { type } from "@testing-library/user-event/dist/type";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Dialogs.module.css";
@@ -32,6 +33,10 @@ export const Dialogs = () => {
     { id: 5, name: "Lama Egor" },
   ];
 
+  let dialogsElements = dialogsData.map((dialog) => {
+    <DialogItem name={dialog.name} id={dialog.id} />;
+  });
+
   let messageData = [
     { id: 1, message: "Hi" },
     { id: 2, message: "Where are you?" },
@@ -42,13 +47,7 @@ export const Dialogs = () => {
 
   return (
     <div className={styles.dialogs}>
-      <div className={styles.dialogsItems}>
-        <DialogItem name={dialogsData[0].name} id={dialogsData[0].id} />
-        <DialogItem name={dialogsData[1].name} id={dialogsData[1].id} />
-        <DialogItem name={dialogsData[2].name} id={dialogsData[2].id} />
-        <DialogItem name={dialogsData[3].name} id={dialogsData[3].id} />
-        <DialogItem name={dialogsData[4].name} id={dialogsData[4].id} />
-      </div>
+      <div className={styles.dialogsItems}>{dialogsElements}</div>
       <div className={styles.messages}>
         <Message message={messageData[0].message} />
         <Message message={messageData[1].message} />

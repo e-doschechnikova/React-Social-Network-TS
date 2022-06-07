@@ -45,16 +45,14 @@ export const Dialogs = () => {
     { id: 5, message: "Bye!" },
   ];
 
+  let messagesElements = messageData.map((message) => {
+    <Message message={message.message} />;
+  });
+
   return (
     <div className={styles.dialogs}>
       <div className={styles.dialogsItems}>{dialogsElements}</div>
-      <div className={styles.messages}>
-        <Message message={messageData[0].message} />
-        <Message message={messageData[1].message} />
-        <Message message={messageData[2].message} />
-        <Message message={messageData[3].message} />
-        <Message message={messageData[4].message} />
-      </div>
+      <div className={styles.messages}>{messagesElements}</div>
     </div>
   );
 };

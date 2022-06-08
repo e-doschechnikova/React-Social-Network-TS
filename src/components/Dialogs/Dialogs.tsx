@@ -1,28 +1,8 @@
 import { type } from "@testing-library/user-event/dist/type";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { DialogItem } from "./DialogItem/DialogItem";
 import styles from "./Dialogs.module.css";
-
-type DialogItemPropsType = {
-  id: number;
-  name: string;
-};
-
-const DialogItem = (props: DialogItemPropsType) => {
-  return (
-    <div className={styles.dialog + " " + styles.active}>
-      <NavLink to={"/dialogs/" + props.id}>{props.name}</NavLink>
-    </div>
-  );
-};
-
-type MessagePropsType = {
-  message: string;
-};
-
-const Message = (props: MessagePropsType) => {
-  return <div className={styles.dialog}>{props.message}</div>;
-};
+import { Message } from "./Message/Message";
 
 export const Dialogs = () => {
   let dialogs = [

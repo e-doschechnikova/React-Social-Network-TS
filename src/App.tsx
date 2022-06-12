@@ -8,10 +8,9 @@ import { Navbar } from "./components/Navbar/Navbar";
 import { News } from "./components/News/News";
 import { Profile } from "./components/Profile/Profile";
 import { Setting } from "./components/Setting/Setting";
-import { PostsPropsType } from "./index";
+import { ProfilePagePropsType } from "./index";
 
-function App(props: PostsPropsType) {
-
+function App(props: ProfilePagePropsType) {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -20,9 +19,24 @@ function App(props: PostsPropsType) {
         <div className="app-wrapper-content">
           <Route
             path={"/profile"}
-            render={() => <Profile posts={props.posts} />}
+            render={() => (
+              <Profile
+                posts={props.posts}
+                dialogs={props.dialogs}
+                messages={props.messages}
+              />
+            )}
           />
-          <Route path={"/dialogs"} render={() => <Dialogs />} />
+          <Route
+            path={"/dialogs"}
+            render={() => (
+              <Dialogs
+                posts={props.posts}
+                dialogs={props.dialogs}
+                messages={props.messages}
+              />
+            )}
+          />
           <Route path={"/news"} render={() => <News />} />
           <Route path={"/music"} render={() => <Music />} />
           <Route path={"/setting"} render={() => <Setting />} />

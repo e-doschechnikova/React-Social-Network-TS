@@ -8,11 +8,6 @@ type DialogsPropsType = {
   name: string;
 };
 
-type MessagePropsType = {
-  id: number;
-  message: string;
-};
-
 let dialogs: Array<DialogsPropsType> = [
   { id: 1, name: "Lama Iliya" },
   { id: 2, name: "Lama Mama" },
@@ -20,6 +15,11 @@ let dialogs: Array<DialogsPropsType> = [
   { id: 4, name: "Lama Ira" },
   { id: 5, name: "Lama Egor" },
 ];
+
+type MessagePropsType = {
+  id: number;
+  message: string;
+};
 
 let messages: Array<MessagePropsType> = [
   { id: 1, message: "Hi" },
@@ -40,14 +40,14 @@ export type PostPropsType = {
   likesCount: number;
 };
 
+export type MyPostPropsType = {
+  posts: Array<PostPropsType>;
+};
+
 export type ProfilePagePropsType = {
   posts: Array<PostPropsType>;
   dialogs: Array<DialogsPropsType>;
   messages: Array<MessagePropsType>;
-};
-
-export type MyPostPropsType = {
-  posts: Array<PostPropsType>;
 };
 
 let posts: Array<PostPropsType> = [

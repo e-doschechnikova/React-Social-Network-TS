@@ -1,9 +1,9 @@
 import React from "react";
-import { ProfilePagePropsType } from "../../../index";
+import { MyPostPropsType } from "../../../index";
 import styles from "./MyPost.module.css";
 import { Post } from "./Post/Post";
 
-export const MyPost = (props: ProfilePagePropsType) => {
+export const MyPost = (props: MyPostPropsType) => {
   let postsElements = props.posts.map((post) => (
     <Post post={post.post} likesCount={post.likesCount} />
   ));

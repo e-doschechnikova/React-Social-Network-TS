@@ -4,8 +4,9 @@ import { ProfilePagePropsType } from "../..";
 import { DialogItem } from "./DialogItem/DialogItem";
 import styles from "./Dialogs.module.css";
 import { Message } from "./Message/Message";
+import { DialogsMessagesPropsType } from "../..";
 
-export const Dialogs = (props: ProfilePagePropsType) => {
+export const Dialogs = (props: DialogsMessagesPropsType) => {
   let dialogsElements = props.dialogs.map((dialog) => (
     <DialogItem key={dialog.id} name={dialog.name} id={dialog.id} />
   ));

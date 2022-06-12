@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { type } from "os";
 
 type DialogsPropsType = {
   id: number;
@@ -30,6 +29,11 @@ let messages: Array<MessagePropsType> = [
   { id: 5, message: "Bye!" },
 ];
 
+export type DialogsMessagesPropsType = {
+  dialogs: Array<DialogsPropsType>;
+  messages: Array<MessagePropsType>;
+};
+
 export type PostPropsType = {
   id: number;
   post: string;
@@ -40,6 +44,10 @@ export type ProfilePagePropsType = {
   posts: Array<PostPropsType>;
   dialogs: Array<DialogsPropsType>;
   messages: Array<MessagePropsType>;
+};
+
+export type MyPostPropsType = {
+  posts: Array<PostPropsType>;
 };
 
 let posts: Array<PostPropsType> = [

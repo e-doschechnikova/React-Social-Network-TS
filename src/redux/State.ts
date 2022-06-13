@@ -19,10 +19,15 @@ export type DialogPagePropsType = {
   messages: Array<MessagePropsType>;
 };
 type SidebarPropsType = {};
-type RootStatePropsType = {
+
+export type RootStatePropsType = {
   profilePage: ProfilePagePropsType;
   dialogsPage: DialogPagePropsType;
   sidebar: SidebarPropsType;
+};
+
+export type AppPropsType = {
+  appState: RootStatePropsType;
 };
 
 let state: RootStatePropsType = {

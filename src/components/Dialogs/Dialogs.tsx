@@ -1,12 +1,11 @@
 import { type } from "@testing-library/user-event/dist/type";
 import React from "react";
-import { ProfilePagePropsType } from "../..";
 import { DialogItem } from "./DialogItem/DialogItem";
 import styles from "./Dialogs.module.css";
 import { Message } from "./Message/Message";
-import { DialogsMessagesPropsType } from "../..";
+import { DialogPagePropsType } from "../../redux/State";
 
-export const Dialogs = (props: DialogsMessagesPropsType) => {
+export const Dialogs = (props: DialogPagePropsType) => {
   let dialogsElements = props.dialogs.map((dialog) => (
     <DialogItem key={dialog.id} name={dialog.name} id={dialog.id} />
   ));

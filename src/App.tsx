@@ -8,9 +8,9 @@ import { Navbar } from "./components/Navbar/Navbar";
 import { News } from "./components/News/News";
 import { Profile } from "./components/Profile/Profile";
 import { Setting } from "./components/Setting/Setting";
-import { ProfilePagePropsType } from "./index";
+import { AppPropsType } from "./redux/State";
 
-function App(props: ProfilePagePropsType) {
+function App(props: AppPropsType) {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -19,12 +19,15 @@ function App(props: ProfilePagePropsType) {
         <div className="app-wrapper-content">
           <Route
             path={"/profile"}
-            render={() => <Profile posts={props.posts} />}
+            render={() => <Profile posts={props.appState.profilePage.posts} />}
           />
           <Route
             path={"/dialogs"}
             render={() => (
-              <Dialogs dialogs={props.dialogs} messages={props.messages} />
+              <Dialogs
+                dialogs={props.appState.dialogsPage.dialogs}
+                messages={props.appState.dialogsPage.messages}
+              />
             )}
           />
           <Route path={"/news"} render={() => <News />} />

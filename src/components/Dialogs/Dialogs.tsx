@@ -17,6 +17,10 @@ export const Dialogs = (props: DialogPagePropsType) => {
     <div className={styles.dialogs}>
       <div className={styles.dialogsItems}>{dialogsElements}</div>
       <div className={styles.messages}>{messagesElements}</div>
+      <div>
+        <textarea></textarea>
+        <button>send message</button>
+      </div>
     </div>
   );
 };

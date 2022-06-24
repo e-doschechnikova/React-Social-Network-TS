@@ -2,6 +2,7 @@ import React, { createRef } from "react";
 import { ProfilePagePropsType } from "../../../redux/State";
 import styles from "./MyPost.module.css";
 import { Post } from "./Post/Post";
+import { addPost } from "../../../redux/State";
 
 export const MyPost = (props: ProfilePagePropsType) => {
   let postsElements = props.posts.map((post) => (
@@ -11,9 +12,8 @@ export const MyPost = (props: ProfilePagePropsType) => {
   let newPostElement = React.createRef<HTMLTextAreaElement>();
 
   const addPost = () => {
-    // let text = newPostElement.current.value;
-    console.log(newPostElement.current?.value);
-    alert("hi");
+    let text = newPostElement.current.value;
+    props.addPost(text)
   };
 
   return (

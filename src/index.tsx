@@ -3,5 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import state from "./redux/State";
+import { addPost } from "./redux/State";
 
-ReactDOM.render(<App appState={state} />, document.getElementById("root"));
+addPost("coolclass");
+
+ReactDOM.render(
+  <App appState={state} addPostCallBack={addPost} />,
+  document.getElementById("root")
+);

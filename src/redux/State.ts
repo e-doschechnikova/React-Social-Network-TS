@@ -1,41 +1,60 @@
-type MessagePropsType = {
+///------------------------- type for state----------------------------------
+type MessageStateType = {
   id: number;
   message: string;
 };
-type DialogPropsType = {
+type DialogStateType = {
   id: number;
   name: string;
 };
-export type PostPropsType = {
+type PostStateType = {
   id: number;
   post: string;
   likesCount: number;
 };
-export type ProfilePagePropsType = {
-  posts: Array<PostPropsType>;
+type ProfilePageStateType = {
+  posts: Array<PostStateType>;
 };
-export type DialogPagePropsType = {
-  dialogs: Array<DialogPropsType>;
-  messages: Array<MessagePropsType>;
+type DialogPageStateType = {
+  dialogs: Array<DialogStateType>;
+  messages: Array<MessageStateType>;
 };
-export type FriendsSidebarPropsType = {
+type FriendsSidebarStateType = {
   id: number;
   name: string;
   avatar: string;
 };
-type SidebarPropsType = {
-  friendsSidebar: Array<FriendsSidebarPropsType>;
+type SidebarStateType = {
+  friendsSidebar: Array<FriendsSidebarStateType>;
 };
-export type RootStatePropsType = {
-  profilePage: ProfilePagePropsType;
-  dialogsPage: DialogPagePropsType;
-  sidebar: SidebarPropsType;
+type RootStateType = {
+  profilePage: ProfilePageStateType;
+  dialogsPage: DialogPageStateType;
+  sidebar: SidebarStateType;
 };
+///------------------------- type for components-------------------------------
+
 export type AppPropsType = {
-  appState: RootStatePropsType;
+  appState: RootStateType;
+  addPostCallBack: (postMessage: string) => void;
+};
+export type MyPostPropsType = {
+  posts: Array<PostStateType>;
+  addPostCallBack: (postMessage: string) => void;
 };
 
-let state: RootStatePropsType = {
+export type ProfilePagePropsType = {
+  posts: Array<PostStateType>;
+  addPostCallBack: (postMessage: string) => void;
+};
+
+export type DialogPagePropsType = {
+  dialogs: Array<DialogStateType>;
+  messages: Array<MessageStateType>;
+};
+///
+
+let state: RootStateType = {
   profilePage: {
     posts: [
       { id: 1, post: "Hi", likesCount: 5 },
@@ -83,6 +102,16 @@ let state: RootStatePropsType = {
       },
     ],
   },
+};
+
+export const addPost = (postMessage: string) => {
+  const newPost: PostStateType = {
+    id: 5,
+    post: postMessage,
+    likesCount: 0,
+  };
+
+  state.profilePage.posts.push(newPost);
 };
 
 export default state;

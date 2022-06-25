@@ -9,6 +9,8 @@ import { News } from "./components/News/News";
 import { Profile } from "./components/Profile/Profile";
 import { Setting } from "./components/Setting/Setting";
 import { AppPropsType } from "./redux/State";
+import { addPost } from "./redux/State";
+
 
 function App(props: AppPropsType) {
   return (
@@ -19,7 +21,12 @@ function App(props: AppPropsType) {
         <div className="app-wrapper-content">
           <Route
             path={"/profile"}
-            render={() => <Profile posts={props.appState.profilePage.posts} />}
+            render={() => (
+              <Profile
+                posts={props.appState.profilePage.posts}
+                addPostCallBack={addPost}
+              />
+            )}
           />
           <Route
             path={"/dialogs"}

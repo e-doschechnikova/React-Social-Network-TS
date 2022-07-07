@@ -3,6 +3,8 @@ import { DialogItem } from "./DialogItem/DialogItem";
 import styles from "./Dialogs.module.css";
 import { Message } from "./Message/Message";
 import { DialogPagePropsType } from "../../redux/State";
+import { Button, IconButton } from "@material-ui/core";
+import { Send, SendRounded } from "@material-ui/icons";
 
 export const Dialogs = (props: DialogPagePropsType) => {
   let dialogsElements = props.dialogs.map((dialog) => (
@@ -18,8 +20,13 @@ export const Dialogs = (props: DialogPagePropsType) => {
       <div className={styles.dialogsItems}>{dialogsElements}</div>
       <div className={styles.messages}>{messagesElements}</div>
       <div>
-        <textarea></textarea>
-        <button>send message</button>
+        <textarea></textarea>{" "}
+        <IconButton size={"small"}>
+          <Button variant={"contained"}>
+            send message
+            <SendRounded></SendRounded>
+          </Button>{" "}
+        </IconButton>
       </div>
     </div>
   );

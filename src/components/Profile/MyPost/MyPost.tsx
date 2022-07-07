@@ -3,6 +3,7 @@ import { MyPostPropsType } from "../../../redux/State";
 import styles from "./MyPost.module.css";
 import { Post } from "./Post/Post";
 import { addPost } from "../../../redux/State";
+import { Button } from "@material-ui/core";
 
 export const MyPost = (props: MyPostPropsType) => {
   let postsElements = props.posts.map((post) => (
@@ -24,7 +25,9 @@ export const MyPost = (props: MyPostPropsType) => {
           <textarea ref={newPostElement}></textarea>
         </div>
         <div>
-          <button onClick={addPost}>Add post</button>
+          <Button variant={"contained"} color={"inherit"} onClick={addPost}>
+            Add post
+          </Button>
         </div>
         <div className={styles.posts}>{postsElements}</div>
       </div>

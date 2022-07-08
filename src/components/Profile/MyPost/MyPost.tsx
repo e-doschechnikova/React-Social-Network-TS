@@ -1,8 +1,7 @@
-import React, { createRef } from "react";
+import React from "react";
 import { MyPostPropsType } from "../../../redux/State";
 import styles from "./MyPost.module.css";
 import { Post } from "./Post/Post";
-import { addPost } from "../../../redux/State";
 import { Button } from "@material-ui/core";
 
 export const MyPost = (props: MyPostPropsType) => {
@@ -13,8 +12,9 @@ export const MyPost = (props: MyPostPropsType) => {
   let newPostElement = React.createRef<HTMLTextAreaElement>();
 
   const addPost = () => {
-    let text = newPostElement.current ? newPostElement.current.value : "---";
+    let text = newPostElement.current ? newPostElement.current.value : "";
     props.addPostCallBack(text);
+    newPostElement.current!.value = "";
   };
 
   return (

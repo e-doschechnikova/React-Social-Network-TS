@@ -4,7 +4,7 @@ import styles from "./Dialogs.module.css";
 import { Message } from "./Message/Message";
 import { DialogPagePropsType } from "../../redux/State";
 import { Button, IconButton } from "@material-ui/core";
-import { Send, SendRounded } from "@material-ui/icons";
+import { SendRounded } from "@material-ui/icons";
 
 export const Dialogs = (props: DialogPagePropsType) => {
   let dialogsElements = props.dialogs.map((dialog) => (

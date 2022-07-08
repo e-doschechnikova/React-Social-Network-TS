@@ -1,3 +1,4 @@
+import { rerenderEntireTree } from "./../render";
 ///------------------------- type for state----------------------------------
 type MessageStateType = {
   id: number;
@@ -27,7 +28,7 @@ type FriendsSidebarStateType = {
 type SidebarStateType = {
   friendsSidebar: Array<FriendsSidebarStateType>;
 };
-type RootStateType = {
+export type RootStateType = {
   profilePage: ProfilePageStateType;
   dialogsPage: DialogPageStateType;
   sidebar: SidebarStateType;
@@ -112,6 +113,7 @@ export const addPost = (postMessage: string) => {
   };
 
   state.profilePage.posts.push(newPost);
+  rerenderEntireTree(state);
 };
 
 export default state;

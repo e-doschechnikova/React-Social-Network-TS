@@ -14,6 +14,7 @@ type PostStateType = {
   likesCount: number;
 };
 type ProfilePageStateType = {
+  messageForNewPost: string;
   posts: Array<PostStateType>;
 };
 type DialogPageStateType = {
@@ -42,11 +43,13 @@ export type AppPropsType = {
 export type MyPostPropsType = {
   posts: Array<PostStateType>;
   addPostCallBack: (postMessage: string) => void;
+  messageForNewPost: string;
 };
 
 export type ProfilePagePropsType = {
   posts: Array<PostStateType>;
   addPostCallBack: (postMessage: string) => void;
+  messageForNewPost: string;
 };
 
 export type DialogPagePropsType = {
@@ -57,6 +60,7 @@ export type DialogPagePropsType = {
 
 let state: RootStateType = {
   profilePage: {
+    messageForNewPost: "",
     posts: [
       { id: 1, post: "Hi", likesCount: 5 },
       { id: 2, post: "I`am lost!!!", likesCount: 2 },

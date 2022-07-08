@@ -11,7 +11,6 @@ import { Setting } from "./components/Setting/Setting";
 import { AppPropsType } from "./redux/State";
 import { addPost } from "./redux/State";
 
-
 function App(props: AppPropsType) {
   return (
     <BrowserRouter>
@@ -25,6 +24,7 @@ function App(props: AppPropsType) {
               <Profile
                 posts={props.appState.profilePage.posts}
                 addPostCallBack={addPost}
+                messageForNewPost={props.appState.profilePage.messageForNewPost}
               />
             )}
           />

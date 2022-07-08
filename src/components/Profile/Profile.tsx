@@ -9,7 +9,11 @@ export const Profile = (props: ProfilePagePropsType) => {
   return (
     <div>
       <ProfileInfo />
-      <MyPost posts={props.posts} addPostCallBack={addPost} />
+      <MyPost
+        posts={props.posts}
+        addPostCallBack={addPost}
+        messageForNewPost={props.messageForNewPost}
+      />
     </div>
   );
 };

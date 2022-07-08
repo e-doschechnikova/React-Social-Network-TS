@@ -60,7 +60,7 @@ export type DialogPagePropsType = {
 
 let state: RootStateType = {
   profilePage: {
-    messageForNewPost: "",
+    messageForNewPost: "hi",
     posts: [
       { id: 1, post: "Hi", likesCount: 5 },
       { id: 2, post: "I`am lost!!!", likesCount: 2 },

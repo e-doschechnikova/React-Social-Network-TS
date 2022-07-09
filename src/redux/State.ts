@@ -112,10 +112,18 @@ let state: RootStateType = {
   },
 };
 
-export const addPost = (postMessage: string) => {
+declare global {
+  interface Window {
+    state: RootStateType;
+  }
+}
+
+window.state = state;
+
+export const addPost = () => {
   const newPost: PostStateType = {
     id: 5,
-    post: postMessage,
+    post: state.profilePage.messageForNewPost,
     likesCount: 0,
   };
 

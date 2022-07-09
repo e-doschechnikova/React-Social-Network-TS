@@ -8,7 +8,7 @@ import { Navbar } from "./components/Navbar/Navbar";
 import { News } from "./components/News/News";
 import { Profile } from "./components/Profile/Profile";
 import { Setting } from "./components/Setting/Setting";
-import { AppPropsType } from "./redux/State";
+import { AppPropsType, updateNewPostText } from "./redux/State";
 import { addPost } from "./redux/State";
 
 function App(props: AppPropsType) {
@@ -25,6 +25,7 @@ function App(props: AppPropsType) {
                 posts={props.appState.profilePage.posts}
                 addPostCallBack={addPost}
                 messageForNewPost={props.appState.profilePage.messageForNewPost}
+                updateNewPostText={updateNewPostText}
               />
             )}
           />

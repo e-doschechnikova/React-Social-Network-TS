@@ -17,14 +17,20 @@ export const MyPost = (props: MyPostPropsType) => {
     newPostElement.current!.value = "";
   };
 
-  let onPostChange = () => {};
+  let onPostChange = () => {
+    props.updateNewPostText;
+  };
 
   return (
     <div className={styles.postsBlock}>
       <h3>My post</h3>
       <div>
         <div>
-          <textarea ref={newPostElement} onChange={onPostChange} value={props.messageForNewPost}></textarea>
+          <textarea
+            ref={newPostElement}
+            onChange={onPostChange}
+            value={props.messageForNewPost}
+          ></textarea>
         </div>
         <div>
           <Button variant={"contained"} color={"inherit"} onClick={addPost}>

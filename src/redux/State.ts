@@ -39,17 +39,20 @@ export type RootStateType = {
 export type AppPropsType = {
   appState: RootStateType;
   addPostCallBack: (postMessage: string) => void;
+  updateNewPostText: (newText: string) => void;
 };
 export type MyPostPropsType = {
   posts: Array<PostStateType>;
   addPostCallBack: (postMessage: string) => void;
   messageForNewPost: string;
+  updateNewPostText: (newText: string) => void;
 };
 
 export type ProfilePagePropsType = {
   posts: Array<PostStateType>;
   addPostCallBack: (postMessage: string) => void;
   messageForNewPost: string;
+  updateNewPostText: (newText: string) => void;
 };
 
 export type DialogPagePropsType = {
@@ -117,6 +120,11 @@ export const addPost = (postMessage: string) => {
   };
 
   state.profilePage.posts.push(newPost);
+  rerenderEntireTree(state);
+};
+
+export const updateNewPostText = (newText: string) => {
+  state.profilePage.messageForNewPost = newText;
   rerenderEntireTree(state);
 };
 

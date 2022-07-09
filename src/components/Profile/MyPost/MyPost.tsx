@@ -14,11 +14,12 @@ export const MyPost = (props: MyPostPropsType) => {
   const addPost = () => {
     let text = newPostElement.current ? newPostElement.current.value : "";
     props.addPostCallBack(text);
-    newPostElement.current!.value = "";
+    props.updateNewPostText("");
   };
 
   let onPostChange = () => {
-    props.updateNewPostText;
+    let text = newPostElement.current ? newPostElement.current.value : "";
+    props.updateNewPostText(text);
   };
 
   return (

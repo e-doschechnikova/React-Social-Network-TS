@@ -38,19 +38,19 @@ export type RootStateType = {
 
 export type AppPropsType = {
   appState: RootStateType;
-  addPostCallBack: (postMessage: string) => void;
+  addPostCallBack: () => void;
   updateNewPostText: (newText: string) => void;
 };
 export type MyPostPropsType = {
   posts: Array<PostStateType>;
-  addPostCallBack: (postMessage: string) => void;
+  addPostCallBack: () => void;
   messageForNewPost: string;
   updateNewPostText: (newText: string) => void;
 };
 
 export type ProfilePagePropsType = {
   posts: Array<PostStateType>;
-  addPostCallBack: (postMessage: string) => void;
+  addPostCallBack: () => void;
   messageForNewPost: string;
   updateNewPostText: (newText: string) => void;
 };

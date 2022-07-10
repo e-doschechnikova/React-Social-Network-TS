@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import state, {
   addPost,
@@ -9,11 +10,13 @@ import state, {
 
 export const rerenderEntireTree = (state: RootStateType) => {
   ReactDOM.render(
-    <App
-      appState={state}
-      addPostCallBack={addPost}
-      updateNewPostText={updateNewPostText}
-    />,
+    <BrowserRouter>
+      <App
+        appState={state}
+        addPostCallBack={addPost}
+        updateNewPostText={updateNewPostText}
+      />
+    </BrowserRouter>,
     document.getElementById("root")
   );
 };

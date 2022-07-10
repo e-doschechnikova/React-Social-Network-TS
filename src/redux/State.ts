@@ -1,4 +1,7 @@
-import { rerenderEntireTree } from "./../render";
+let rerenderEntireTree = () => {
+  console.log("state  chenged");
+};
+
 ///------------------------- type for state----------------------------------
 type MessageStateType = {
   id: number;
@@ -34,6 +37,7 @@ export type RootStateType = {
   dialogsPage: DialogPageStateType;
   sidebar: SidebarStateType;
 };
+
 ///------------------------- type for components-------------------------------
 
 export type AppPropsType = {

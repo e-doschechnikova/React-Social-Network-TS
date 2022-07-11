@@ -1,8 +1,9 @@
 let rerenderEntireTree = () => {
-  console.log("state  chenged");
+  console.log("hello");
 };
 
-///------------------------- type for state----------------------------------
+///------------------------- type for state----------------------------------\\\
+
 type MessageStateType = {
   id: number;
   message: string;
@@ -36,9 +37,10 @@ export type RootStateType = {
   profilePage: ProfilePageStateType;
   dialogsPage: DialogPageStateType;
   sidebar: SidebarStateType;
+  subscribe: (observer: (state: RootStateType) => void) => void;
 };
 
-///------------------------- type for components-------------------------------
+///------------------------- type for components-------------------------------\\\
 
 export type AppPropsType = {
   appState: RootStateType;
@@ -132,12 +134,16 @@ export const addPost = () => {
   };
 
   state.profilePage.posts.push(newPost);
-  rerenderEntireTree(state);
+  rerenderEntireTree();
 };
 
 export const updateNewPostText = (newText: string) => {
   state.profilePage.messageForNewPost = newText;
-  rerenderEntireTree(state);
+  rerenderEntireTree();
+};
+
+export const subscribe = (observer: (state: RootStateType) => void) => {
+  rerenderEntireTree = observer;
 };
 
 export default state;

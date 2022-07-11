@@ -5,6 +5,7 @@ import App from "./App";
 import state, {
   addPost,
   RootStateType,
+  subscribe,
   updateNewPostText,
 } from "./redux/State";
 
@@ -22,3 +23,5 @@ export const rerenderEntireTree = (state: RootStateType) => {
 };
 
 rerenderEntireTree(state);
+
+subscribe(rerenderEntireTree);

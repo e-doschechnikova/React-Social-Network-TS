@@ -72,7 +72,7 @@ export type StoreType = {
   getState: () => RootStateType;
 };
 
-const store: StoreType = {
+export const store: StoreType = {
   _state: {
     profilePage: {
       messageForNewPost: "hi",
@@ -158,5 +158,3 @@ const store: StoreType = {
 //   }
 // }
 // window.state = store;
-
-export default store;

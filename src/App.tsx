@@ -8,10 +8,15 @@ import { Navbar } from "./components/Navbar/Navbar";
 import { News } from "./components/News/News";
 import { Profile } from "./components/Profile/Profile";
 import { Setting } from "./components/Setting/Setting";
-import { AppPropsType, updateNewPostText } from "./redux/State";
-import { addPost } from "./redux/State";
+import { AppPropsType, StoreType } from "./redux/State";
 
-function App(props: AppPropsType) {
+type PropsType = {
+  store: StoreType;
+};
+
+const App: React.FC<PropsType> = (props) => {
+  const state = props.store.getState();
+
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -22,10 +27,10 @@ function App(props: AppPropsType) {
             path={"/profile"}
             render={() => (
               <Profile
-                posts={props.appState.profilePage.posts}
-                addPostCallBack={addPost}
-                messageForNewPost={props.appState.profilePage.messageForNewPost}
-                updateNewPostText={updateNewPostText}
+                posts={state.profilePage.posts}
+                addPostCallBack={props.store.addPost}
+                messageForNewPost={state.profilePage.messageForNewPost}
+                updateNewPostText={props.store.updateNewPostText}
               />
             )}
           />
@@ -33,8 +38,8 @@ function App(props: AppPropsType) {
             path={"/dialogs"}
             render={() => (
               <Dialogs
-                dialogs={props.appState.dialogsPage.dialogs}
-                messages={props.appState.dialogsPage.messages}
+                dialogs={state.dialogsPage.dialogs}
+                messages={state.dialogsPage.messages}
               />
             )}
           />
@@ -45,6 +50,6 @@ function App(props: AppPropsType) {
       </div>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

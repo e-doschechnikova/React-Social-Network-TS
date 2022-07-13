@@ -18,4 +18,6 @@ export const rerenderEntireTree = () => {
   );
 };
 
+rerenderEntireTree(store.getState());
+
 store.subscribe(rerenderEntireTree);

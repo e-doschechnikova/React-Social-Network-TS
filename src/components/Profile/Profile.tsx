@@ -2,8 +2,7 @@ import React from "react";
 import { MyPost } from "./MyPost/MyPost";
 import { ProfileInfo } from "./ProfileInfo/ProfileInfo";
 import styles from "./Profile.module.css";
-import { ProfilePagePropsType, updateNewPostText } from "../../redux/State";
-import { addPost } from "../../redux/State";
+import { ProfilePagePropsType, store } from "../../redux/State";
 
 export const Profile = (props: ProfilePagePropsType) => {
   return (
@@ -11,9 +10,9 @@ export const Profile = (props: ProfilePagePropsType) => {
       <ProfileInfo />
       <MyPost
         posts={props.posts}
-        addPostCallBack={addPost}
+        addPostCallBack={store.addPost}
         messageForNewPost={props.messageForNewPost}
-        updateNewPostText={updateNewPostText}
+        updateNewPostText={store.updateNewPostText}
       />
     </div>
   );

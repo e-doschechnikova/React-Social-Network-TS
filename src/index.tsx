@@ -2,19 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
-import { AppPropsType, store } from "./redux/State";
-// import state, {
-//   addPost,
-//   RootStateType,
-//   subscribe,
-//   updateNewPostText,
-// } from "./redux/State";
+import { store } from "./redux/State";
 
-type RenderEntireTreeType = {
-  store: AppPropsType;
-};
-
-export const rerenderEntireTree = (store: RenderEntireTreeType) => {
+export const rerenderEntireTree = () => {
   ReactDOM.render(
     <BrowserRouter>
       <App
@@ -28,6 +18,4 @@ export const rerenderEntireTree = (store: RenderEntireTreeType) => {
   );
 };
 
-rerenderEntireTree(store);
-
-subscribe(rerenderEntireTree);
+store.subscribe(rerenderEntireTree);

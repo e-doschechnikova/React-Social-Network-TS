@@ -28,9 +28,11 @@ const App: React.FC<PropsType> = (props) => {
             render={() => (
               <Profile
                 posts={state.profilePage.posts}
-                addPostCallBack={props.store.addPost}
+                addPostCallBack={props.store.addPost.bind(props.store)}
                 messageForNewPost={state.profilePage.messageForNewPost}
-                updateNewPostText={props.store.updateNewPostText}
+                updateNewPostText={props.store.updateNewPostText.bind(
+                  props.store
+                )}
               />
             )}
           />

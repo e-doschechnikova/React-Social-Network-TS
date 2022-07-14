@@ -29,6 +29,12 @@ type FriendsSidebarStateType = {
 type SidebarStateType = {
   friendsSidebar: Array<FriendsSidebarStateType>;
 };
+
+export type StateType = {
+  dialogsPage: DialogPageStateType;
+  profilePage: ProfilePageStateType;
+};
+
 export type RootStateType = {
   profilePage: ProfilePageStateType;
   dialogsPage: DialogPageStateType;
@@ -65,10 +71,13 @@ export type DialogPagePropsType = {
 
 export type StoreType = {
   _state: RootStateType;
-  updateNewPostText: (newText: string) => void;
+  _callSubscriber: (state: RootStateType) => void;
+
   addPost: () => void;
-  _rerenderEntireTree: () => void;
-  subscribe: (observer: () => void) => void;
+  updateNewPostText: (newText: string) => void;
+
+  subscribe: (observer: (state: RootStateType) => void) => void;
+  // subscribe: (a: any) => void;
   getState: () => RootStateType;
 };
 
@@ -127,9 +136,8 @@ export const store: StoreType = {
       ],
     },
   },
-  updateNewPostText(newText: string) {
-    this._state.profilePage.messageForNewPost = newText;
-    this._rerenderEntireTree();
+  _callSubscriber() {
+    console.log("hello");
   },
   addPost() {
     const newPost: PostStateType = {
@@ -139,13 +147,15 @@ export const store: StoreType = {
     };
 
     this._state.profilePage.posts.push(newPost);
-    this._rerenderEntireTree();
+    this._callSubscriber(this._state);
   },
-  _rerenderEntireTree() {
-    console.log("hello");
+  updateNewPostText(newText: string) {
+    console.log()
+    this._state.profilePage.messageForNewPost = newText;
+    this._callSubscriber(this._state);
   },
   subscribe(observer) {
-    this._rerenderEntireTree = observer;
+    this._callSubscriber = observer;
   },
   getState() {
     return this._state;

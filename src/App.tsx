@@ -8,7 +8,7 @@ import { Navbar } from "./components/Navbar/Navbar";
 import { News } from "./components/News/News";
 import { Profile } from "./components/Profile/Profile";
 import { Setting } from "./components/Setting/Setting";
-import { StoreType } from "./redux/State";
+import { store, StoreType } from "./redux/State";
 
 type PropsType = {
   store: StoreType;
@@ -30,9 +30,7 @@ const App: React.FC<PropsType> = (props) => {
                 posts={state.profilePage.posts}
                 addPostCallBack={props.store.addPost.bind(props.store)}
                 messageForNewPost={state.profilePage.messageForNewPost}
-                updateNewPostText={props.store.updateNewPostText.bind(
-                  props.store
-                )}
+                updateNewPostText={props.store.updateNewPostText.bind(store)}
               />
             )}
           />
@@ -40,8 +38,8 @@ const App: React.FC<PropsType> = (props) => {
             path={"/dialogs"}
             render={() => (
               <Dialogs
-                dialogs={state.dialogsPage.dialogs}
-                messages={state.dialogsPage.messages}
+                dialogs={props.store._state.dialogsPage.dialogs}
+                messages={props.store._state.dialogsPage.messages}
               />
             )}
           />

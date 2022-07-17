@@ -8,7 +8,7 @@ import { Navbar } from "./components/Navbar/Navbar";
 import { News } from "./components/News/News";
 import { Profile } from "./components/Profile/Profile";
 import { Setting } from "./components/Setting/Setting";
-import { store, StoreType } from "./redux/State";
+import { StoreType } from "./redux/State";
 
 type PropsType = {
   store: StoreType;
@@ -16,7 +16,7 @@ type PropsType = {
 
 const App: React.FC<PropsType> = (props) => {
   const state = props.store.getState();
-
+  console.log(props);
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -30,7 +30,9 @@ const App: React.FC<PropsType> = (props) => {
                 posts={state.profilePage.posts}
                 addPostCallBack={props.store.addPost.bind(props.store)}
                 messageForNewPost={state.profilePage.messageForNewPost}
-                updateNewPostText={props.store.updateNewPostText.bind(store)}
+                updateNewPostText={props.store.updateNewPostText.bind(
+                  props.store
+                )}
               />
             )}
           />

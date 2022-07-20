@@ -1,5 +1,9 @@
 import React from "react";
-import { MyPostPropsType } from "../../../redux/State";
+import {
+  addPostAC,
+  MyPostPropsType,
+  updateNewPostTextActionTypeAC,
+} from "../../../redux/State";
 import styles from "./MyPost.module.css";
 import { Post } from "./Post/Post";
 import { Button } from "@material-ui/core";
@@ -12,16 +16,15 @@ export const MyPost = (props: MyPostPropsType) => {
   let newPostElement = React.createRef<HTMLTextAreaElement>();
 
   const addPost = () => {
-   debugger; 
-    props.addPostCallBack();
-    props.updateNewPostText("");
+    props.dispatch(addPostAC());
+    // props.addPostCallBack();
+    // props.updateNewPostText("");
   };
 
   let onPostChange = () => {
-    debugger; 
     let text = newPostElement.current ? newPostElement.current.value : "";
-    props.updateNewPostText(text);
- 
+    props.dispatch(updateNewPostTextActionTypeAC(text));
+    // props.updateNewPostText(text);
   };
 
   return (

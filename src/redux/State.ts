@@ -45,21 +45,24 @@ export type RootStateType = {
 
 export type AppPropsType = {
   appState: RootStateType;
-  addPostCallBack: () => void;
-  updateNewPostText: (newText: string) => void;
+  // addPostCallBack: () => void;
+  // updateNewPostText: (newText: string) => void;
+  dispatch: (action: ActionsTypes) => void;
 };
 export type MyPostPropsType = {
   posts: Array<PostStateType>;
-  addPostCallBack: () => void;
+  // addPostCallBack: () => void;
   messageForNewPost: string;
-  updateNewPostText: (newText: string) => void;
+  // updateNewPostText: (newText: string) => void;
+  dispatch: (action: ActionsTypes) => void;
 };
 
 export type ProfilePagePropsType = {
   posts: Array<PostStateType>;
-  addPostCallBack: () => void;
+  // addPostCallBack: () => void;
   messageForNewPost: string;
-  updateNewPostText: (newText: string) => void;
+  // updateNewPostText: (newText: string) => void;
+  dispatch: (action: ActionsTypes) => void;
 };
 
 export type DialogPagePropsType = {
@@ -73,11 +76,43 @@ export type StoreType = {
   _state: RootStateType;
   _callSubscriber: (state: RootStateType) => void;
 
-  addPost: () => void;
-  updateNewPostText: (newText: string) => void;
+  // addPost: () => void;
+  // updateNewPostText: (newText: string) => void;
 
   subscribe: (observer: (state: RootStateType) => void) => void;
   getState: () => RootStateType;
+
+  dispatch: (action: ActionsTypes) => void;
+};
+
+///------------------------- type for action -----------------------------------\\\
+
+type AddPostActionType = {
+  type: "ADD-POST";
+};
+
+type UpdateNewPostTextActionType = {
+  type: "UPDATE-NEW-POST-TEXT";
+  newText: string;
+};
+
+export type ActionsTypes = AddPostActionType | UpdateNewPostTextActionType;
+
+///-----------------------------------------------------------------------------\\\
+
+export const addPostAC = (): AddPostActionType => {
+  return {
+    type: "ADD-POST",
+  };
+};
+
+export const updateNewPostTextActionTypeAC = (
+  newText: string
+): UpdateNewPostTextActionType => {
+  return {
+    type: "UPDATE-NEW-POST-TEXT",
+    newText: newText,
+  };
 };
 
 export const store: StoreType = {
@@ -138,26 +173,42 @@ export const store: StoreType = {
   _callSubscriber() {
     console.log("state changed");
   },
-  addPost() {
-    const newPost: PostStateType = {
-      id: 5,
-      post: this._state.profilePage.messageForNewPost,
-      likesCount: 0,
-    };
-    this._state.profilePage.posts.push(newPost);
-    this._callSubscriber(this._state);
-  },
 
-  updateNewPostText(newText: string) {
-    debugger
-    this._state.profilePage.messageForNewPost = newText;
-    this._callSubscriber(this._state);
-  },
   subscribe(observer) {
     this._callSubscriber = observer;
   },
   getState() {
     return this._state;
+  },
+
+  // addPost() {
+  //   const newPost: PostStateType = {
+  //     id: 5,
+  //     post: this._state.profilePage.messageForNewPost,
+  //     likesCount: 0,
+  //   };
+  //   this._state.profilePage.posts.push(newPost);
+  //   this._callSubscriber(this._state);
+  // },
+
+  // updateNewPostText(newText: string) {
+  //   this._state.profilePage.messageForNewPost = newText;
+  //   this._callSubscriber(this._state);
+  // },
+
+  dispatch(action) {
+    if (action.type === "ADD-POST") {
+      const newPost: PostStateType = {
+        id: 5,
+        post: this._state.profilePage.messageForNewPost,
+        likesCount: 0,
+      };
+      this._state.profilePage.posts.push(newPost);
+      this._callSubscriber(this._state);
+    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+      this._state.profilePage.messageForNewPost = action.newText;
+      this._callSubscriber(this._state);
+    }
   },
 };
 

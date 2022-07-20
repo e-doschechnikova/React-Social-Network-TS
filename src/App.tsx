@@ -8,10 +8,11 @@ import { Navbar } from "./components/Navbar/Navbar";
 import { News } from "./components/News/News";
 import { Profile } from "./components/Profile/Profile";
 import { Setting } from "./components/Setting/Setting";
-import { StoreType } from "./redux/State";
+import { ActionsTypes, StoreType } from "./redux/State";
 
 type PropsType = {
   store: StoreType;
+  dispatch: (action: ActionsTypes) => void;
 };
 
 const App: React.FC<PropsType> = (props) => {
@@ -28,11 +29,12 @@ const App: React.FC<PropsType> = (props) => {
             render={() => (
               <Profile
                 posts={state.profilePage.posts}
-                addPostCallBack={props.store.addPost.bind(props.store)}
+                // addPostCallBack={props.store.addPost.bind(props.store)}
+                dispatch={props.store.dispatch.bind(props.store)}
                 messageForNewPost={state.profilePage.messageForNewPost}
-                updateNewPostText={props.store.updateNewPostText.bind(
-                  props.store
-                )}
+                // updateNewPostText={props.store.updateNewPostText.bind(
+                //   props.store
+                // )}
               />
             )}
           />

@@ -12,13 +12,16 @@ export const MyPost = (props: MyPostPropsType) => {
   let newPostElement = React.createRef<HTMLTextAreaElement>();
 
   const addPost = () => {
+   debugger; 
     props.addPostCallBack();
     props.updateNewPostText("");
   };
 
   let onPostChange = () => {
+    debugger; 
     let text = newPostElement.current ? newPostElement.current.value : "";
     props.updateNewPostText(text);
+ 
   };
 
   return (

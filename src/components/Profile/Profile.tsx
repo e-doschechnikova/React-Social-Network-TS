@@ -10,9 +10,9 @@ export const Profile = (props: ProfilePagePropsType) => {
       <ProfileInfo />
       <MyPost
         posts={props.posts}
-        addPostCallBack={store.addPost}
+        addPostCallBack={props.addPostCallBack}
         messageForNewPost={props.messageForNewPost}
-        updateNewPostText={store.updateNewPostText}
+        updateNewPostText={props.updateNewPostText}
       />
     </div>
   );

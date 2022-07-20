@@ -136,7 +136,7 @@ export const store: StoreType = {
     },
   },
   _callSubscriber() {
-    console.log("hello");
+    console.log("state changed");
   },
   addPost() {
     const newPost: PostStateType = {
@@ -149,23 +149,16 @@ export const store: StoreType = {
   },
 
   updateNewPostText(newText: string) {
-    console.log(this._state);
+    debugger
     this._state.profilePage.messageForNewPost = newText;
     this._callSubscriber(this._state);
   },
   subscribe(observer) {
     this._callSubscriber = observer;
   },
-
   getState() {
     return this._state;
   },
 };
 
-// declare global {
-//   interface Window {
-//     state: RootStateType;
-//   }
-// }
-
-// window.store = store
+// window.store = store;

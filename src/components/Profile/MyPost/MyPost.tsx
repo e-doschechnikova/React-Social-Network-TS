@@ -2,7 +2,7 @@ import React from "react";
 import {
   addPostAC,
   MyPostPropsType,
-  updateNewPostTextActionTypeAC,
+  updateNewPostTextAC,
 } from "../../../redux/State";
 import styles from "./MyPost.module.css";
 import { Post } from "./Post/Post";
@@ -23,7 +23,7 @@ export const MyPost = (props: MyPostPropsType) => {
 
   let onPostChange = () => {
     let text = newPostElement.current ? newPostElement.current.value : "";
-    props.dispatch(updateNewPostTextActionTypeAC(text));
+    props.dispatch(updateNewPostTextAC(text));
     // props.updateNewPostText(text);
   };
 

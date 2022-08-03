@@ -1,5 +1,7 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+const UPDATE_FOR_NEW_MESSAGE = "UPDATE-FOR-NEW-MESSAGE";
+const SEND_MESSAGE = "SEND-MESSAGE";
 
 ///------------------------- type for state ----------------------------------\\\
 
@@ -23,6 +25,7 @@ type ProfilePageStateType = {
 type DialogPageStateType = {
   dialogs: Array<DialogStateType>;
   messages: Array<MessageStateType>;
+  messageForNewMessage: string;
 };
 type FriendsSidebarStateType = {
   id: number;
@@ -92,7 +95,9 @@ export type StoreType = {
 
 export type ActionsTypes =
   | ReturnType<typeof addPostAC>
-  | ReturnType<typeof updateNewPostTextAC>;
+  | ReturnType<typeof updateNewPostTextAC>
+  | ReturnType<typeof sendMessagetAC>
+  | ReturnType<typeof updateNewMessageTextAC>;
 
 ///-----------------------------------------------------------------------------\\\
 
@@ -106,6 +111,20 @@ export const updateNewPostTextAC = (newText: string) => {
   return {
     type: UPDATE_NEW_POST_TEXT,
     newText: newText,
+  } as const;
+};
+
+export const sendMessagetAC = (newMessage: string) => {
+  return {
+    type: SEND_MESSAGE,
+    newMessage: newMessage,
+  } as const;
+};
+
+export const updateNewMessageTextAC = (newMessage: string) => {
+  return {
+    type: UPDATE_FOR_NEW_MESSAGE,
+    newMessage: newMessage,
   } as const;
 };
 
@@ -140,6 +159,7 @@ export const store: StoreType = {
         { id: 4, message: "See you later!" },
         { id: 5, message: "Bye!" },
       ],
+      messageForNewMessage: "",
     },
     sidebar: {
       friendsSidebar: [
@@ -201,6 +221,14 @@ export const store: StoreType = {
       this._callSubscriber(this._state);
     } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.profilePage.messageForNewPost = action.newText;
+      this._callSubscriber(this._state);
+    } else if (action.type === UPDATE_FOR_NEW_MESSAGE) {
+      this._state.dialogsPage.messageForNewMessage = action.newMessage;
+      this._callSubscriber(this._state);
+    } else if (action.type === SEND_MESSAGE) {
+      let newMessage = this._state.dialogsPage.messageForNewMessage;
+      this._state.dialogsPage.messageForNewMessage = "";
+      this._state.dialogsPage.messages.push({ id: 6, message: newMessage });
       this._callSubscriber(this._state);
     }
   },

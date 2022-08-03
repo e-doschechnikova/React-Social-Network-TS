@@ -74,6 +74,8 @@ export type ProfilePagePropsType = {
 export type DialogPagePropsType = {
   dialogs: Array<DialogStateType>;
   messages: Array<MessageStateType>;
+  newMessageText: string;
+  dispatch: (action: ActionsTypes) => void;
 };
 
 ///------------------------- type for store ------------------------------------\\\
@@ -96,7 +98,7 @@ export type StoreType = {
 export type ActionsTypes =
   | ReturnType<typeof addPostAC>
   | ReturnType<typeof updateNewPostTextAC>
-  | ReturnType<typeof sendMessagetAC>
+  | ReturnType<typeof sendMessageAC>
   | ReturnType<typeof updateNewMessageTextAC>;
 
 ///-----------------------------------------------------------------------------\\\
@@ -114,10 +116,9 @@ export const updateNewPostTextAC = (newText: string) => {
   } as const;
 };
 
-export const sendMessagetAC = (newMessage: string) => {
+export const sendMessageAC = () => {
   return {
     type: SEND_MESSAGE,
-    newMessage: newMessage,
   } as const;
 };
 

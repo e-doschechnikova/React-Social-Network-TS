@@ -44,6 +44,10 @@ const App: React.FC<PropsType> = (props) => {
               <Dialogs
                 dialogs={props.store._state.dialogsPage.dialogs}
                 messages={props.store._state.dialogsPage.messages}
+                newMessageText={
+                  props.store._state.dialogsPage.messageForNewMessage
+                }
+                dispatch={props.dispatch.bind(props.store)}
               />
             )}
           />

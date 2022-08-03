@@ -1,3 +1,6 @@
+const ADD_POST = "ADD-POST";
+const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+
 ///------------------------- type for state ----------------------------------\\\
 
 type MessageStateType = {
@@ -87,23 +90,21 @@ export type StoreType = {
 
 ///------------------------- type for action -----------------------------------\\\
 
-type AddPostActionType = ReturnType<typeof addPostAC>;
-
-type UpdateNewPostTextActionType = ReturnType<typeof updateNewPostTextAC>;
-
-export type ActionsTypes = AddPostActionType | UpdateNewPostTextActionType;
+export type ActionsTypes =
+  | ReturnType<typeof addPostAC>
+  | ReturnType<typeof updateNewPostTextAC>;
 
 ///-----------------------------------------------------------------------------\\\
 
 export const addPostAC = () => {
   return {
-    type: "ADD-POST",
+    type: ADD_POST,
   } as const;
 };
 
 export const updateNewPostTextAC = (newText: string) => {
   return {
-    type: "UPDATE-NEW-POST-TEXT",
+    type: UPDATE_NEW_POST_TEXT,
     newText: newText,
   } as const;
 };
@@ -190,7 +191,7 @@ export const store: StoreType = {
   // },
 
   dispatch(action) {
-    if (action.type === "ADD-POST") {
+    if (action.type === ADD_POST) {
       const newPost: PostStateType = {
         id: 5,
         post: this._state.profilePage.messageForNewPost,
@@ -198,7 +199,7 @@ export const store: StoreType = {
       };
       this._state.profilePage.posts.push(newPost);
       this._callSubscriber(this._state);
-    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+    } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.profilePage.messageForNewPost = action.newText;
       this._callSubscriber(this._state);
     }

@@ -18,7 +18,7 @@ type PostStateType = {
   post: string;
   likesCount: number;
 };
-type ProfilePageStateType = {
+export type ProfilePageStateType = {
   messageForNewPost: string;
   posts: Array<PostStateType>;
 };
@@ -32,7 +32,7 @@ type FriendsSidebarStateType = {
   name: string;
   avatar: string;
 };
-type SidebarStateType = {
+export type SidebarStateType = {
   friendsSidebar: Array<FriendsSidebarStateType>;
 };
 

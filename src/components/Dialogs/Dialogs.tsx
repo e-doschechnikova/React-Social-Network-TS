@@ -18,7 +18,7 @@ export const Dialogs = (props: DialogPagePropsType) => {
   const messagesElements = props.messages.map((message) => (
     <Message key={message.id} message={message.message} />
   ));
-  const newMessageText = props.newMessageText;
+  const newMessageText = props.messageForNewMessage;
 
   const onSendMessageClick = () => {
     props.dispatch(sendMessageAC());

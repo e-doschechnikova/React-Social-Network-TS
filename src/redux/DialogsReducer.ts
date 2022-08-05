@@ -4,5 +4,5 @@ export const DialogsReducer = (
   state: DialogPagePropsType,
   action: ActionsTypes
 ) => {
-  return;
+  return state;
 };

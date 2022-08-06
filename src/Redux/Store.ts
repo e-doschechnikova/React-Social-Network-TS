@@ -1,18 +1,19 @@
 import DialogsReducer, {sendMessageAC, updateNewMessageTextAC} from "./DialogsReducer";
 import ProfileReducer, {addPostAC, updateNewPostTextAC} from "./ProfileReducer";
 import SidebarReducer from "./SidebarReducer";
+import {v1} from "uuid";
 ///------------------------- type for state ----------------------------------\\\
 
 type MessageStateType = {
-    id: number;
+    id: string;
     message: string;
 };
 type DialogStateType = {
-    id: number;
+    id: string;
     name: string;
 };
 type PostStateType = {
-    id: number;
+    id: string;
     post: string;
     likesCount: number;
 };
@@ -26,7 +27,7 @@ export type DialogPageStateType = {
     messageForNewMessage: string;
 };
 type FriendsSidebarStateType = {
-    id: number;
+    id: string;
     name: string;
     avatar: string;
 };
@@ -49,23 +50,17 @@ export type RootStateType = {
 
 export type AppPropsType = {
     appState: RootStateType;
-    // addPostCallBack: () => void;
-    // updateNewPostText: (newText: string) => void;
     dispatch: (action: ActionsTypes) => void;
 };
 export type MyPostPropsType = {
     posts: Array<PostStateType>;
-    // addPostCallBack: () => void;
     messageForNewPost: string;
-    // updateNewPostText: (newText: string) => void;
     dispatch: (action: ActionsTypes) => void;
 };
 
 export type ProfilePagePropsType = {
     posts: Array<PostStateType>;
-    // addPostCallBack: () => void;
     messageForNewPost: string;
-    // updateNewPostText: (newText: string) => void;
     dispatch: (action: ActionsTypes) => void;
 };
 
@@ -81,9 +76,6 @@ export type DialogPagePropsType = {
 export type StoreType = {
     _state: RootStateType;
     _callSubscriber: (state: RootStateType) => void;
-
-    // addPost: () => void;
-    // updateNewPostText: (newText: string) => void;
 
     subscribe: (observer: (state: RootStateType) => void) => void;
     getState: () => RootStateType;
@@ -107,12 +99,12 @@ export const store: StoreType = {
         profilePage: {
             messageForNewPost: "hi",
             posts: [
-                {id: 1, post: "Hi", likesCount: 5},
-                {id: 2, post: "I`am lost!!!", likesCount: 2},
-                {id: 3, post: "Wow! It's really you ", likesCount: 15},
-                {id: 4, post: "How are you?", likesCount: 4},
+                {id: v1(), post: "Hi", likesCount: 5},
+                {id: v1(), post: "I`am lost!!!", likesCount: 2},
+                {id: v1(), post: "Wow! It's really you ", likesCount: 15},
+                {id: v1(), post: "How are you?", likesCount: 4},
                 {
-                    id: 5,
+                    id: v1(),
                     post: "And who is it? And how did I get here?",
                     likesCount: 1,
                 },
@@ -120,37 +112,37 @@ export const store: StoreType = {
         },
         dialogsPage: {
             dialogs: [
-                {id: 1, name: "Lama Iliya"},
-                {id: 2, name: "Lama Mama"},
-                {id: 3, name: "Lama Papa"},
-                {id: 4, name: "Lama Ira"},
-                {id: 5, name: "Lama Egor"},
+                {id: v1(), name: "Lama Iliya"},
+                {id: v1(), name: "Lama Mama"},
+                {id: v1(), name: "Lama Papa"},
+                {id: v1(), name: "Lama Ira"},
+                {id: v1(), name: "Lama Egor"},
             ],
             messages: [
-                {id: 1, message: "Hi"},
-                {id: 2, message: "Where are you?"},
-                {id: 3, message: "OK!"},
-                {id: 4, message: "See you later!"},
-                {id: 5, message: "Bye!"},
+                {id: v1(), message: "Hi"},
+                {id: v1(), message: "Where are you?"},
+                {id: v1(), message: "OK!"},
+                {id: v1(), message: "See you later!"},
+                {id: v1(), message: "Bye!"},
             ],
             messageForNewMessage: "",
         },
         sidebar: {
             friendsSidebar: [
                 {
-                    id: 1,
+                    id: v1(),
                     name: "Lama Iliya",
                     avatar:
                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_eTHoHEyBCjd-p5MA-pUIvItDoaKI7e-A5KsHZrC715mj_B3YtZPF2Cw26mpv2Xzijqk&usqp=CAU",
                 },
                 {
-                    id: 3,
+                    id: v1(),
                     name: "Lama Papa",
                     avatar:
                         "https://i.pinimg.com/474x/db/0a/15/db0a1537246c4867dd7a312fe23bea12.jpg",
                 },
                 {
-                    id: 4,
+                    id: v1(),
                     name: "Lama Ira",
                     avatar:
                         "https://i.pinimg.com/736x/fa/7d/6c/fa7d6cf13f3dd106d6d1af501aecb1d8.jpg",

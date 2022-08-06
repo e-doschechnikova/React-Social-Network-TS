@@ -1,12 +1,9 @@
-import { ActionsTypes, DialogPagePropsType } from "./State";
+import { ActionsTypes, DialogPageStateType } from "./State";
 
 const UPDATE_FOR_NEW_MESSAGE = "UPDATE-FOR-NEW-MESSAGE";
 const SEND_MESSAGE = "SEND-MESSAGE";
 
-export const DialogsReducer = (
-  state: DialogPagePropsType,
-  action: ActionsTypes
-) => {
+const DialogsReducer = (state: DialogPageStateType, action: ActionsTypes) => {
   if (action.type === UPDATE_FOR_NEW_MESSAGE) {
     state.messageForNewMessage = action.newMessage;
   } else if (action.type === SEND_MESSAGE) {
@@ -17,3 +14,5 @@ export const DialogsReducer = (
 
   return state;
 };
+
+export default DialogsReducer;

@@ -1,3 +1,7 @@
+import DialogsReducer from "./DialogsReducer";
+import ProfileReducer from "./ProfileReducer";
+import SidebarReducer from "./SidebarReducer";
+
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const UPDATE_FOR_NEW_MESSAGE = "UPDATE-FOR-NEW-MESSAGE";
@@ -22,7 +26,7 @@ export type ProfilePageStateType = {
   messageForNewPost: string;
   posts: Array<PostStateType>;
 };
-type DialogPageStateType = {
+export type DialogPageStateType = {
   dialogs: Array<DialogStateType>;
   messages: Array<MessageStateType>;
   messageForNewMessage: string;
@@ -195,44 +199,12 @@ export const store: StoreType = {
   getState() {
     return this._state;
   },
-
-  // addPost() {
-  //   const newPost: PostStateType = {
-  //     id: 5,
-  //     post: this._state.profilePage.messageForNewPost,
-  //     likesCount: 0,
-  //   };
-  //   this._state.profilePage.posts.push(newPost);
-  //   this._callSubscriber(this._state);
-  // },
-
-  // updateNewPostText(newText: string) {
-  //   this._state.profilePage.messageForNewPost = newText;
-  //   this._callSubscriber(this._state);
-  // },
-
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      const newPost: PostStateType = {
-        id: 5,
-        post: this._state.profilePage.messageForNewPost,
-        likesCount: 0,
-      };
-      this._state.profilePage.posts.push(newPost);
-      this._callSubscriber(this._state);
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-      this._state.profilePage.messageForNewPost = action.newText;
-      this._callSubscriber(this._state);
-    } else if (action.type === UPDATE_FOR_NEW_MESSAGE) {
-      this._state.dialogsPage.messageForNewMessage = action.newMessage;
-      this._callSubscriber(this._state);
-    } else if (action.type === SEND_MESSAGE) {
-      let newMessage = this._state.dialogsPage.messageForNewMessage;
-      this._state.dialogsPage.messageForNewMessage = "";
-      this._state.dialogsPage.messages.push({ id: 6, message: newMessage });
-      this._callSubscriber(this._state);
-    }
+    this._state.profilePage = ProfileReducer(this._state.profilePage, action);
+    this._state.dialogsPage = DialogsReducer(this._state.dialogsPage, action);
+    this._state.sidebar = SidebarReducer(this._state.sidebar, action);
+    this._callSubscriber(this._state);
   },
 };
 
-// window.store = store;
+// window.store = store

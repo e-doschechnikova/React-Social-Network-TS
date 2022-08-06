@@ -9,10 +9,7 @@ type PostStateType = {
   likesCount: number;
 };
 
-export const ProfileReducer = (
-  state: ProfilePageStateType,
-  action: ActionsTypes
-) => {
+const ProfileReducer = (state: ProfilePageStateType, action: ActionsTypes) => {
   if (action.type === ADD_POST) {
     const newPost: PostStateType = {
       id: 5,
@@ -27,3 +24,5 @@ export const ProfileReducer = (
 
   return state;
 };
+
+export default ProfileReducer;

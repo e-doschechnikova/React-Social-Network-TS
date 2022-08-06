@@ -4,10 +4,10 @@ import styles from "./Dialogs.module.css";
 import {Message} from "./Message/Message";
 import {
     DialogPagePropsType,
-} from "../../redux/State";
+} from "../../Redux/Store";
 import {Button, IconButton} from "@material-ui/core";
 import {SendRounded} from "@material-ui/icons";
-import {sendMessageAC, updateNewMessageTextAC} from "../../redux/DialogsReducer";
+import {sendMessageAC, updateNewMessageTextAC} from "../../Redux/DialogsReducer";
 
 export const Dialogs = (props: DialogPagePropsType) => {
     const dialogsElements = props.dialogs.map((dialog) => (

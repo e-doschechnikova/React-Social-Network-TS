@@ -1,11 +1,11 @@
 import React from "react";
 import {
     MyPostPropsType,
-} from "../../../redux/State";
+} from "../../../Redux/Store";
 import styles from "./MyPost.module.css";
 import {Post} from "./Post/Post";
 import {Button} from "@material-ui/core";
-import {addPostAC, updateNewPostTextAC} from "../../../redux/ProfileReducer";
+import {addPostAC, updateNewPostTextAC} from "../../../Redux/ProfileReducer";
 
 export const MyPost = (props: MyPostPropsType) => {
     let postsElements = props.posts.map((post) => (

@@ -1,4 +1,5 @@
 import {ActionsTypes, DialogPageStateType} from "./Store";
+import {v1} from "uuid";
 
 const UPDATE_FOR_NEW_MESSAGE = "UPDATE-FOR-NEW-MESSAGE";
 const SEND_MESSAGE = "SEND-MESSAGE";
@@ -11,7 +12,7 @@ const DialogsReducer = (state: DialogPageStateType, action: ActionsTypes) => {
         case SEND_MESSAGE:
             let newMessage = state.messageForNewMessage;
             state.messageForNewMessage = "";
-            state.messages.push({id: 6, message: newMessage});
+            state.messages.push({id: v1(), message: newMessage});
             return state
         default:
             return state;

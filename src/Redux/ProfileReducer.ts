@@ -1,10 +1,11 @@
 import {ActionsTypes, ProfilePageStateType} from "./Store";
+import {v1} from "uuid";
 
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 
 type PostStateType = {
-    id: number;
+    id: string;
     post: string;
     likesCount: number;
 };
@@ -13,7 +14,7 @@ const ProfileReducer = (state: ProfilePageStateType, action: ActionsTypes) => {
     switch (action.type) {
         case ADD_POST:
             const newPost: PostStateType = {
-                id: 5,
+                id: v1(),
                 post: state.messageForNewPost,
                 likesCount: 0,
             };

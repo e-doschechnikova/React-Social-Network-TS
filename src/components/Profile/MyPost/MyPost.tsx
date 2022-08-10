@@ -1,29 +1,24 @@
 import React from "react";
-import {
-    MyPostPropsType,
-} from "../../../Redux/Store";
 import styles from "./MyPost.module.css";
 import {Post} from "./Post/Post";
 import {Button} from "@material-ui/core";
-import {addPostAC, updateNewPostTextAC} from "../../../Redux/ProfileReducer";
 
-export const MyPost = (props: MyPostPropsType) => {
+import {MyPostsPropsType} from "./MyPostContainer";
+
+export const MyPost = (props: MyPostsPropsType) => {
     let postsElements = props.posts.map((post) => (
         <Post key={post.id} post={post.post} likesCount={post.likesCount}/>
     ));
 
     let newPostElement = React.createRef<HTMLTextAreaElement>();
 
-    const addPost = () => {
-        props.dispatch(addPostAC());
-        // props.addPostCallBack();
-        // props.updateNewPostText("");
+    const onAddPost = () => {
+        props.addPost();
     };
 
     let onPostChange = () => {
         let text = newPostElement.current ? newPostElement.current.value : "";
-        props.dispatch(updateNewPostTextAC(text));
-        // props.updateNewPostText(text);
+        props.updateNewPostText(text);
     };
 
     return (
@@ -38,7 +33,7 @@ export const MyPost = (props: MyPostPropsType) => {
           ></textarea>
                 </div>
                 <div>
-                    <Button variant={"contained"} color={"inherit"} onClick={addPost}>
+                    <Button variant={"contained"} color={"inherit"} onClick={onAddPost}>
                         Add post
                     </Button>
                 </div>

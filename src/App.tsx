@@ -28,10 +28,10 @@ const App: React.FC<PropsType> = (props) => {
             path={"/profile"}
             render={() => (
               <Profile
-                posts={state.profilePage.posts}
+                // posts={state.profilePage.posts}
                 // addPostCallBack={props.store.addPost.bind(props.store)}
-                dispatch={props.store.dispatch.bind(props.store)}
-                messageForNewPost={state.profilePage.messageForNewPost}
+                // dispatch={props.store.dispatch.bind(props.store)}
+                  // messageForNewPost={state.profilePage.messageForNewPost}
                 // updateNewPostText={props.store.updateNewPostText.bind(
                 //   props.store
                 // )}

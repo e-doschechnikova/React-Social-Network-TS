@@ -12,7 +12,7 @@ type DialogStateType = {
     id: string;
     name: string;
 };
-type PostStateType = {
+export type PostStateType = {
     id: string;
     post: string;
     likesCount: number;
@@ -52,11 +52,14 @@ export type AppPropsType = {
     appState: RootStateType;
     dispatch: (action: ActionsTypes) => void;
 };
-export type MyPostPropsType = {
-    posts: Array<PostStateType>;
-    messageForNewPost: string;
-    dispatch: (action: ActionsTypes) => void;
-};
+
+// export type MyPostPropsType = {
+//     posts: Array<PostStateType>;
+//     messageForNewPost: string;
+//     dispatch: (action: ActionsTypes) => void;
+// addPostCallBack: () => void
+// updateNewPostText: (text: any) => void
+// };
 
 export type ProfilePagePropsType = {
     posts: Array<PostStateType>;

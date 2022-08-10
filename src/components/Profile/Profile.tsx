@@ -1,19 +1,23 @@
 import React from "react";
-import {MyPost} from "./MyPost/MyPost";
+
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {ProfilePagePropsType} from "../../Redux/Store";
+import {MyPostContainer} from "./MyPost/MyPostContainer";
 
-export const Profile = (props: ProfilePagePropsType) => {
+type ProfilePropsType = {}
+
+export const Profile: React.FC<ProfilePropsType> = (props) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPost
-                posts={props.posts}
-                dispatch={props.dispatch}
-                // addPostCallBack={props.addPostCallBack}
-                messageForNewPost={props.messageForNewPost}
-                // updateNewPostText={props.updateNewPostText}
-            />
+            <MyPostContainer/>
+            {/*<MyPost*/}
+            {/*    posts={props.posts}*/}
+            {/*    // dispatch={props.dispatch}*/}
+            {/*    // addPostCallBack={props.addPostCallBack}*/}
+            {/*    messageForNewPost={props.messageForNewPost}*/}
+            {/*    updateNewPostText={props.updateNewPostText}*/}
+            {/*/>*/}
         </div>
     );
 };

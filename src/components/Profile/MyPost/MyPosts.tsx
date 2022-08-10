@@ -2,10 +2,10 @@ import React from "react";
 import styles from "./MyPost.module.css";
 import {Post} from "./Post/Post";
 import {Button} from "@material-ui/core";
+import {MyPostsPropsType} from "./MyPostsContainer";
 
-import {MyPostsPropsType} from "./MyPostContainer";
 
-export const MyPost = (props: MyPostsPropsType) => {
+export const MyPosts = (props: MyPostsPropsType) => {
     let postsElements = props.posts.map((post) => (
         <Post key={post.id} post={post.post} likesCount={post.likesCount}/>
     ));

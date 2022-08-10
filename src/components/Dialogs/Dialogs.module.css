@@ -1,42 +1,79 @@
 .dialogs {
-  display: grid;
-  grid-template-columns: 2fr 10fr;
-  padding: 10px;
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    padding: 10px;
 }
 
 .dialogsItems {
-  color: #4e5560;
-  cursor: pointer;
+    color: #4e5560;
+    cursor: pointer;
 }
 
 .dialogsItems .active {
-  color: #fafafa;
+    color: #fafafa;
 }
 
 .dialogsItems a:hover {
-  background-color: #bfc2c7ba;
+    background-color: #bfc2c7ba;
 }
 
 .dialog {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .messages {
-  color: #4e5560;
+    color: #4e5560;
 }
 
 .avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  padding: 4px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 4px;
 }
 
 .sentMess {
-  color: #d3dae6;
-  background-color: #989aad;
-  border-radius: 10px;
-  padding: 5px;
-  cursor: pointer;
+    color: #d3dae6;
+    background-color: #989aad;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.textForm {
+    background-color: #dddddd;
+    color: #666666;
+
+    padding: 16px;
+    margin-right: 20px;
+    margin-top: 20px;
+
+    border-radius: 10px;
+    border: 2px solid transparent;
+    outline: none;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+
+    line-height: 1.4;
+
+    width: 250px;
+    height: 50px;
+
+    transition: all 0.2s;
+}
+
+.textForm:hover {
+    cursor: pointer;
+    background-color: #eeeeee;
+}
+
+.textForm:focus {
+    cursor: text;
+    color: #333333;
+    background-color: white;
+    border-color: #333333;
+
 }

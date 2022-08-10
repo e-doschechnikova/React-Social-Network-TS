@@ -100,7 +100,7 @@ export type ActionsTypes =
 export const store: StoreType = {
     _state: {
         profilePage: {
-            messageForNewPost: "hi",
+            messageForNewPost: "✎ write something . . .",
             posts: [
                 {id: v1(), post: "Hi", likesCount: 5},
                 {id: v1(), post: "I`am lost!!!", likesCount: 2},

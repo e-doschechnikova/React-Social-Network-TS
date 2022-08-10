@@ -3,7 +3,6 @@ import {DialogItem} from "./DialogItem/DialogItem";
 import styles from "./Dialogs.module.css";
 import {Message} from "./Message/Message";
 import {Button, IconButton} from "@material-ui/core";
-import {SendRounded} from "@material-ui/icons";
 import {DialogsPropsType} from "./DialogsContainer";
 
 export const Dialogs = (props: DialogsPropsType) => {
@@ -29,17 +28,16 @@ export const Dialogs = (props: DialogsPropsType) => {
             <div className={styles.dialogsItems}>{dialogsElements}</div>
             <div className={styles.messages}>{messagesElements}</div>
             <div>
-        <textarea
+        <textarea className={styles.textForm}
             value={newMessageText}
             onChange={onNewMessageChange}
-            placeholder="enter your message"
+            placeholder="✎ write something..."
         ></textarea>{" "}
             </div>
             <div>
                 <IconButton size={"small"}>
-                    <Button variant={"contained"} onClick={onSendMessageClick}>
-                        send message
-                        <SendRounded></SendRounded>
+                    <Button variant={"outlined"} color="secondary" onClick={onSendMessageClick}>
+                        send
                     </Button>{" "}
                 </IconButton>
             </div>

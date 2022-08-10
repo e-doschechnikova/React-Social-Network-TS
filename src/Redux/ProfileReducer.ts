@@ -10,7 +10,22 @@ type PostStateType = {
     likesCount: number;
 };
 
-const ProfileReducer = (state: ProfilePageStateType, action: ActionsTypes) => {
+export const initialState: ProfilePageStateType = {
+    messageForNewPost: "hi",
+    posts: [
+        {id: v1(), post: "Hi", likesCount: 5},
+        {id: v1(), post: "I`am lost!!!", likesCount: 2},
+        {id: v1(), post: "Wow! It's really you ", likesCount: 15},
+        {id: v1(), post: "How are you?", likesCount: 4},
+        {
+            id: v1(),
+            post: "And who is it? And how did I get here?",
+            likesCount: 1,
+        },
+    ],
+}
+
+const ProfileReducer = (state: ProfilePageStateType = initialState, action: ActionsTypes) => {
     switch (action.type) {
         case ADD_POST:
             const newPost: PostStateType = {

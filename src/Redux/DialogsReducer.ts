@@ -4,7 +4,25 @@ import {v1} from "uuid";
 const UPDATE_FOR_NEW_MESSAGE = "UPDATE-FOR-NEW-MESSAGE";
 const SEND_MESSAGE = "SEND-MESSAGE";
 
-const DialogsReducer = (state: DialogPageStateType, action: ActionsTypes) => {
+const initialState: DialogPageStateType = {
+    dialogs: [
+        {id: v1(), name: "Lama Iliya"},
+        {id: v1(), name: "Lama Mama"},
+        {id: v1(), name: "Lama Papa"},
+        {id: v1(), name: "Lama Ira"},
+        {id: v1(), name: "Lama Egor"},
+    ],
+    messages: [
+        {id: v1(), message: "Hi"},
+        {id: v1(), message: "Where are you?"},
+        {id: v1(), message: "OK!"},
+        {id: v1(), message: "See you later!"},
+        {id: v1(), message: "Bye!"},
+    ],
+    messageForNewMessage: "",
+}
+
+const DialogsReducer = (state: DialogPageStateType = initialState, action: ActionsTypes) => {
     switch (action.type) {
         case UPDATE_FOR_NEW_MESSAGE:
             state.messageForNewMessage = action.newMessage;

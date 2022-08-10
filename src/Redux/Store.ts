@@ -53,13 +53,13 @@ export type AppPropsType = {
     dispatch: (action: ActionsTypes) => void;
 };
 
-export type MyPostPropsType = {
-    posts: Array<PostStateType>;
-    messageForNewPost: string;
-    // dispatch: (action: ActionsTypes) => void;
-    addPost: () => void
-    updateNewPostText: (text: any) => void
-};
+// export type MyPostPropsType = {
+//     posts: Array<PostStateType>;
+//     messageForNewPost: string;
+//     // dispatch: (action: ActionsTypes) => void;
+//     addPost: () => void
+//     updateNewPostText: (text: any) => void
+// };
 
 export type ProfilePagePropsType = {
     posts: Array<PostStateType>;

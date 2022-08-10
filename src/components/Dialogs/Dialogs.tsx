@@ -2,28 +2,26 @@ import React, {ChangeEvent} from "react";
 import {DialogItem} from "./DialogItem/DialogItem";
 import styles from "./Dialogs.module.css";
 import {Message} from "./Message/Message";
-import {
-    DialogPagePropsType,
-} from "../../Redux/Store";
 import {Button, IconButton} from "@material-ui/core";
 import {SendRounded} from "@material-ui/icons";
-import {sendMessageAC, updateNewMessageTextAC} from "../../Redux/DialogsReducer";
+import {DialogsPropsType} from "./DialogsContainer";
 
-export const Dialogs = (props: DialogPagePropsType) => {
-    const dialogsElements = props.dialogs.map((dialog) => (
+export const Dialogs = (props: DialogsPropsType) => {
+
+    const dialogsElements = props.dialogsPage.dialogs.map((dialog) => (
         <DialogItem key={dialog.id} name={dialog.name} id={dialog.id}/>
     ));
-
-    const messagesElements = props.messages.map((message) => (
+    const messagesElements = props.dialogsPage.messages.map((message) => (
         <Message key={message.id} message={message.message}/>
     ));
-    const newMessageText = props.messageForNewMessage;
+    const newMessageText = props.dialogsPage.messageForNewMessage;
 
     const onSendMessageClick = () => {
-        props.dispatch(sendMessageAC());
+        props.sendMessage();
     };
     const onNewMessageChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch(updateNewMessageTextAC(event.currentTarget.value));
+        props.messageForNewMessage(event.currentTarget.value)
+
     };
 
     return (

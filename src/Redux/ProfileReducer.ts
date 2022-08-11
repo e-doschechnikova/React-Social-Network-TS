@@ -4,14 +4,14 @@ import {v1} from "uuid";
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 
-type PostStateType = {
+export type PostType = {
     id: string;
     post: string;
     likesCount: number;
 };
 
 export const initialState: ProfilePageStateType = {
-    messageForNewPost: "hi",
+    newPostText: "hi",
     posts: [
         {id: v1(), post: "Hi", likesCount: 5},
         {id: v1(), post: "I`am lost!!!", likesCount: 2},
@@ -28,16 +28,16 @@ export const initialState: ProfilePageStateType = {
 const ProfileReducer = (state: ProfilePageStateType = initialState, action: ActionsTypes) => {
     switch (action.type) {
         case ADD_POST:
-            const newPost: PostStateType = {
+            const newPost: PostType = {
                 id: v1(),
-                post: state.messageForNewPost,
+                post: state.newPostText,
                 likesCount: 0,
             };
             state.posts.push(newPost);
-            state.messageForNewPost = "";
+            state.newPostText = "";
             return state;
         case UPDATE_NEW_POST_TEXT:
-            state.messageForNewPost = action.newText;
+            state.newPostText = action.newText;
             return state;
         default:
             return state;

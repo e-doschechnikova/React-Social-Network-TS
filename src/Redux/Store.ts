@@ -1,5 +1,5 @@
 import DialogsReducer, {sendMessageAC, updateNewMessageTextAC} from "./DialogsReducer";
-import ProfileReducer, {addPostAC, updateNewPostTextAC} from "./ProfileReducer";
+import ProfileReducer, {addPostAC, PostType, updateNewPostTextAC} from "./ProfileReducer";
 import SidebarReducer from "./SidebarReducer";
 import {v1} from "uuid";
 ///------------------------- type for state ----------------------------------\\\
@@ -12,14 +12,9 @@ type DialogStateType = {
     id: string;
     name: string;
 };
-export type PostStateType = {
-    id: string;
-    post: string;
-    likesCount: number;
-};
 export type ProfilePageStateType = {
-    messageForNewPost: string;
-    posts: Array<PostStateType>;
+    newPostText: string;
+    posts: Array<PostType>;
 };
 export type DialogPageStateType = {
     dialogs: Array<DialogStateType>;
@@ -62,8 +57,8 @@ export type AppPropsType = {
 // };
 
 export type ProfilePagePropsType = {
-    posts: Array<PostStateType>;
-    messageForNewPost: string;
+    posts: Array<PostType>;
+    newPostTex: string;
     dispatch: (action: ActionsTypes) => void;
 };
 
@@ -100,7 +95,7 @@ export type ActionsTypes =
 export const store: StoreType = {
     _state: {
         profilePage: {
-            messageForNewPost: "✎ write something . . .",
+            newPostText: "✎ write something . . .",
             posts: [
                 {id: v1(), post: "Hi", likesCount: 5},
                 {id: v1(), post: "I`am lost!!!", likesCount: 2},

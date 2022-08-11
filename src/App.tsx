@@ -7,17 +7,10 @@ import {Navbar} from "./components/Navbar/Navbar";
 import {News} from "./components/News/News";
 import {Profile} from "./components/Profile/Profile";
 import {Setting} from "./components/Setting/Setting";
-import {StoreType} from "./Redux/Store";
+
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 
-type PropsType = {
-    store: StoreType;
-
-};
-
-const App: React.FC<PropsType> = (props) => {
-    const state = props.store.getState();
-
+const App= () => {
     return (
         <BrowserRouter>
             <div className="app-wrapper">
@@ -27,13 +20,13 @@ const App: React.FC<PropsType> = (props) => {
                     <Route
                         path={"/profile"}
                         render={() => (
-                            <Profile store={props.store}/>
+                            <Profile/>
                         )}
                     />
                     <Route
                         path={"/dialogs"}
                         render={() => (
-                            <DialogsContainer store={props.store}/>
+                            <DialogsContainer/>
                         )}
                     />
                     <Route path={"/news"} render={() => <News/>}/>

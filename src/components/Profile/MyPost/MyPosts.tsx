@@ -27,9 +27,9 @@ export const MyPosts = (props: MyPostsPropsType) => {
             <div>
                 <div>
           <textarea className={styles.textForm}
-              ref={newPostElement}
-              onChange={onPostChange}
-              value={props.messageForNewPost}
+                    ref={newPostElement}
+                    onChange={onPostChange}
+                    value={props.messageForNewPost}
           ></textarea>
                 </div>
                 <div>

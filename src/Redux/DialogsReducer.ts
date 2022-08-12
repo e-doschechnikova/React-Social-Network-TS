@@ -25,13 +25,15 @@ const initialState: DialogPageStateType = {
 const DialogsReducer = (state: DialogPageStateType = initialState, action: ActionsTypes) => {
     switch (action.type) {
         case UPDATE_FOR_NEW_MESSAGE:
-            state.messageForNewMessage = action.newMessage;
-            return state
+            return {
+                ...state, messageForNewMessage: action.newMessage
+            }
         case SEND_MESSAGE:
-            let newMessage = state.messageForNewMessage;
-            state.messageForNewMessage = "";
-            state.messages.push({id: v1(), message: newMessage});
-            return state
+            return {
+                ...state,
+                messages: [...state.messages, {id: v1(), message: state.messageForNewMessage}],
+                messageForNewMessage: ""
+            }
         default:
             return state;
     }

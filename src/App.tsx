@@ -7,16 +7,16 @@ import {Navbar} from "./components/Navbar/Navbar";
 import {News} from "./components/News/News";
 import {Profile} from "./components/Profile/Profile";
 import {Setting} from "./components/Setting/Setting";
-
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 
-const App= () => {
+const App = () => {
     return (
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
                 <Navbar/>
                 <div className="app-wrapper-content">
+
                     <Route
                         path={"/profile"}
                         render={() => (
@@ -33,6 +33,7 @@ const App= () => {
                     <Route path={"/music"} render={() => <Music/>}/>
                     <Route path={"/setting"} render={() => <Setting/>}/>
                 </div>
+
             </div>
         </BrowserRouter>
     );

@@ -21,24 +21,24 @@ export type DialogPageStateType = {
     messages: Array<MessageStateType>;
     messageForNewMessage: string;
 };
-type FriendsSidebarStateType = {
+type SidebarforSriendsStateType = {
     id: string;
     name: string;
     avatar: string;
 };
-export type SidebarStateType = {
-    friendsSidebar: Array<FriendsSidebarStateType>;
+export type SidebarFriendsStateType = {
+    sidebarForFriends: Array<SidebarforSriendsStateType>;
 };
 
-export type StateType = {
-    dialogsPage: DialogPageStateType;
-    profilePage: ProfilePageStateType;
-};
+// export type StateType = {
+//     dialogsPage: DialogPageStateType;
+//     profilePage: ProfilePageStateType;
+// };
 
 export type RootStateType = {
     profilePage: ProfilePageStateType;
     dialogsPage: DialogPageStateType;
-    sidebar: SidebarStateType;
+    sidebarFriends: SidebarFriendsStateType;
 };
 
 ///------------------------- type for components -------------------------------\\\
@@ -125,8 +125,8 @@ export const store: StoreType = {
             ],
             messageForNewMessage: "",
         },
-        sidebar: {
-            friendsSidebar: [
+        sidebarFriends: {
+            sidebarForFriends: [
                 {
                     id: v1(),
                     name: "Lama Iliya",
@@ -161,7 +161,7 @@ export const store: StoreType = {
     dispatch(action) {
         this._state.profilePage = ProfileReducer(this._state.profilePage, action);
         this._state.dialogsPage = DialogsReducer(this._state.dialogsPage, action);
-        this._state.sidebar = SidebarReducer(this._state.sidebar, action);
+        this._state.sidebarFriends = SidebarReducer(this._state.sidebarFriends, action);
         this._callSubscriber(this._state);
     },
 };

@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./MyPost.module.css";
 import {Post} from "./Post/Post";
-import {Button} from "@material-ui/core";
 import {MyPostsPropsType} from "./MyPostsContainer";
 
 
@@ -33,9 +32,9 @@ export const MyPosts = (props: MyPostsPropsType) => {
           ></textarea>
                 </div>
                 <div>
-                    <Button variant={"contained"} color={"inherit"} onClick={onAddPost}>
+                    <button onClick={onAddPost}>
                         Add post
-                    </Button>
+                    </button>
                 </div>
                 <div className={styles.posts}>{postsElements}</div>
             </div>

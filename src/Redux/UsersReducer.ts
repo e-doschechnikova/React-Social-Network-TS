@@ -58,8 +58,24 @@ const initialState: UsersPageStateType = {
 const UsersReducer = (state: UsersPageStateType = initialState, action: UsersActionsType) => {
     switch (action.type) {
         case FOLLOW:
-            return {...state, users: state.users.map(user => user.)}
+            return {
+                ...state, users: state.users.map(user => {
+                    if (user.id === action.userId) {
+                        return {...user, followed: true}
+                    }
+                    return user
+                })
+            }
+
         case UNFOLLOW:
+            return {
+                ...state, users: state.users.map(user => {
+                    if (user.id === action.userId) {
+                        return {...user, followed: false}
+                    }
+                    return user
+                })
+            }
         default:
             return state
 

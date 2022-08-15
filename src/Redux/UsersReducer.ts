@@ -1,16 +1,15 @@
 import React from 'react';
 import {v1} from "uuid";
-import {text} from "stream/consumers";
-
 
 const FOLLOW = "FOLLOW"
 const UNFOLLOW = "UNFOLLOW"
+const SET_USERS = "SET_USERS"
 
 type LocationType = {
     city: string,
     country: string
 }
-type UsersType = {
+export type UserType = {
     id: string,
     followed: boolean
     fullName: string,
@@ -18,11 +17,11 @@ type UsersType = {
     location: LocationType
 }
 
-type UsersPageStateType = {
-    users: Array<UsersType>
+export type InitialStateType = {
+    users: Array<UserType>
 }
 
-const initialState: UsersPageStateType = {
+const initialState: InitialStateType = {
     users: [
         {
             id: v1(),
@@ -55,7 +54,7 @@ const initialState: UsersPageStateType = {
     ]
 }
 
-const UsersReducer = (state: UsersPageStateType = initialState, action: UsersActionsType) => {
+const UsersReducer = (state: InitialStateType = initialState, action: UsersActionsType): InitialStateType => {
     switch (action.type) {
         case FOLLOW:
             return {
@@ -76,6 +75,8 @@ const UsersReducer = (state: UsersPageStateType = initialState, action: UsersAct
                     return user
                 })
             }
+        case SET_USERS:
+            return {...state, users: action.users}
         default:
             return state
 
@@ -83,8 +84,14 @@ const UsersReducer = (state: UsersPageStateType = initialState, action: UsersAct
 };
 
 
-export type UsersActionsType = ReturnType<typeof FollowAC> | ReturnType<typeof UnfollowAC>
-export const FollowAC = (userId: string) => ({type: FOLLOW, userId})
-export const UnfollowAC = (userId: string) => ({type: UNFOLLOW, userId})
+export type UsersActionsType =
+    ReturnType<typeof FollowAC>
+    | ReturnType<typeof UnfollowAC>
+    | ReturnType<typeof SetUsersAC>
+
+export const FollowAC = (userId: string) => ({type: FOLLOW, userId}) as const
+export const UnfollowAC = (userId: string) => ({type: UNFOLLOW, userId}) as const
+export const SetUsersAC = (users: Array<UserType>) => ({type: SET_USERS, users}) as const
+
 
 export default UsersReducer;

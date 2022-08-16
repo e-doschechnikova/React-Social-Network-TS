@@ -9,40 +9,42 @@ import {v1} from "uuid";
 
 
 export const Users = (props: UsersContainerPropsType) => {
-    props.setUser([
-        {
-            id: v1(),
-            followed: true,
-            avatar: Misha,
-            fullName: "Misha",
-            status: "I`m a happy and smiling dog!!!!",
-            location: {city: "St. Petersburg", country: "Russia"}
-        },
-        {
-            id: v1(),
-            followed: true,
-            avatar: Lenya,
-            fullName: "Lenya",
-            status: "I want to eat! :/",
-            location: {city: "St. Petersburg", country: "Russia"}
-        },
-        {
-            id: v1(),
-            followed: true,
-            avatar: Tyson,
-            fullName: "Tyson",
-            status: "I`m a philosopher. Do you want to talk?",
-            location: {city: "St. Petersburg", country: "Russia"}
-        },
-        {
-            id: v1(),
-            followed: false,
-            avatar: Grisha,
-            fullName: "Grisha",
-            status: "I`m a good cat! :)))",
-            location: {city: "St. Petersburg", country: "Russia"}
-        }
-    ])
+    if (props.users.length === 0) {
+        props.setUser([
+            {
+                id: v1(),
+                followed: true,
+                avatar: Misha,
+                fullName: "Misha",
+                status: "I`m a happy and smiling dog!!!!",
+                location: {city: "St. Petersburg", country: "Russia"}
+            },
+            {
+                id: v1(),
+                followed: true,
+                avatar: Lenya,
+                fullName: "Lenya",
+                status: "I want to eat! :/",
+                location: {city: "St. Petersburg", country: "Russia"}
+            },
+            {
+                id: v1(),
+                followed: true,
+                avatar: Tyson,
+                fullName: "Tyson",
+                status: "I`m a philosopher. Do you want to talk?",
+                location: {city: "St. Petersburg", country: "Russia"}
+            },
+            {
+                id: v1(),
+                followed: false,
+                avatar: Grisha,
+                fullName: "Grisha",
+                status: "I`m a good cat! :)))",
+                location: {city: "St. Petersburg", country: "Russia"}
+            }
+        ])
+    }
     return (
         <div>
             {props.users.map(user => <div key={user.id}>

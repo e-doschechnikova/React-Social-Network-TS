@@ -1,14 +1,48 @@
 import React from 'react';
 import styles from "./Users.module.css"
-import {UserType} from "../../Redux/UsersReducer";
+import {UsersContainerPropsType} from "./UsersContainer"
+import Misha from "../../img/Misha.jpg";
+import Lenya from "../../img/Lenya.jpg";
+import Tyson from "../../img/Tyson.jpg";
+import Grisha from "../../img/Grisha.jpg";
+import {v1} from "uuid";
 
-type UsersPropsType = {
-    users: Array<UserType>
-    follow: (id: string) => void,
-    unfollow: (id: string) => void
-}
 
-export const Users = (props: UsersPropsType) => {
+export const Users = (props: UsersContainerPropsType) => {
+    props.setUser([
+        {
+            id: v1(),
+            followed: true,
+            avatar: Misha,
+            fullName: "Misha",
+            status: "I`m a happy and smiling dog!!!!",
+            location: {city: "St. Petersburg", country: "Russia"}
+        },
+        {
+            id: v1(),
+            followed: true,
+            avatar: Lenya,
+            fullName: "Lenya",
+            status: "I want to eat! :/",
+            location: {city: "St. Petersburg", country: "Russia"}
+        },
+        {
+            id: v1(),
+            followed: true,
+            avatar: Tyson,
+            fullName: "Tyson",
+            status: "I`m a philosopher. Do you want to talk?",
+            location: {city: "St. Petersburg", country: "Russia"}
+        },
+        {
+            id: v1(),
+            followed: false,
+            avatar: Grisha,
+            fullName: "Grisha",
+            status: "I`m a good cat! :)))",
+            location: {city: "St. Petersburg", country: "Russia"}
+        }
+    ])
     return (
         <div>
             {props.users.map(user => <div key={user.id}>

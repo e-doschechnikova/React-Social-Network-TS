@@ -15,7 +15,7 @@ type MapDispatchToPropsType = {
     setUser: (users: Array<UserType>) => void
 }
 
-export type UsersPropsType = MapStateToPropsType & MapDispatchToPropsType
+export type UsersContainerPropsType = MapStateToPropsType & MapDispatchToPropsType
 
 const mapStateToProps = (state: ReduxStateType): MapStateToPropsType => {
     return {

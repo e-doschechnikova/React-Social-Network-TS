@@ -10,6 +10,7 @@ import {v1} from "uuid";
 
 export const Users = (props: UsersContainerPropsType) => {
     if (props.users.length === 0) {
+
         props.setUser([
             {
                 id: v1(),

@@ -16,7 +16,7 @@ export const Users = (props: UsersContainerPropsType) => {
             {props.users.map(user => <div key={user.id}>
                 <span>
                     <div>
-                        <img alt={"name"} src={user.avatar} className={styles.userPhoto}/>
+                        <img alt={"name"} src={user.photos.small != null ? user.photos.small : ""} className={styles.userPhoto}/>
                     </div>
                     <div>
                             {user.followed
@@ -30,12 +30,12 @@ export const Users = (props: UsersContainerPropsType) => {
                 </span>
                 <span>
                     <span>
-                        <div>{user.fullName}</div>
+                        <div>{user.name}</div>
                         <div>{user.status}</div>
                     </span>
                     <span>
-                        <div>{user.location.country}</div>
-                        <div>{user.location.city}</div>
+                        <div>{"user.location.country"}</div>
+                        <div>{"user.location.city"}</div>
                     </span>
                 </span>
             </div>)}

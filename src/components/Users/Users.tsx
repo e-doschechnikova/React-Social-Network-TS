@@ -1,50 +1,15 @@
 import React from 'react';
 import styles from "./Users.module.css"
 import {UsersContainerPropsType} from "./UsersContainer"
-import Misha from "../../img/Misha.jpg";
-import Lenya from "../../img/Lenya.jpg";
-import Tyson from "../../img/Tyson.jpg";
-import Grisha from "../../img/Grisha.jpg";
-import {v1} from "uuid";
+import axios from "axios";
 
 
 export const Users = (props: UsersContainerPropsType) => {
     if (props.users.length === 0) {
-
-        props.setUser([
-            {
-                id: v1(),
-                followed: true,
-                avatar: Misha,
-                fullName: "Misha",
-                status: "I`m a happy and smiling dog!!!!",
-                location: {city: "St. Petersburg", country: "Russia"}
-            },
-            {
-                id: v1(),
-                followed: true,
-                avatar: Lenya,
-                fullName: "Lenya",
-                status: "I want to eat! :/",
-                location: {city: "St. Petersburg", country: "Russia"}
-            },
-            {
-                id: v1(),
-                followed: true,
-                avatar: Tyson,
-                fullName: "Tyson",
-                status: "I`m a philosopher. Do you want to talk?",
-                location: {city: "St. Petersburg", country: "Russia"}
-            },
-            {
-                id: v1(),
-                followed: false,
-                avatar: Grisha,
-                fullName: "Grisha",
-                status: "I`m a good cat! :)))",
-                location: {city: "St. Petersburg", country: "Russia"}
-            }
-        ])
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+            debugger
+            props.setUser(response.data.items)
+        })
     }
     return (
         <div>

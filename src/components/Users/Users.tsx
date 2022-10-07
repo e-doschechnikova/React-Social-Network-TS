@@ -2,12 +2,12 @@ import React from 'react';
 import styles from "./Users.module.css"
 import {UsersContainerPropsType} from "./UsersContainer"
 import axios from "axios";
+import userPhoto from "../../assets/images/UserPhoto.png"
 
 
 export const Users = (props: UsersContainerPropsType) => {
     if (props.users.length === 0) {
         axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-            debugger
             props.setUser(response.data.items)
         })
     }
@@ -16,7 +16,8 @@ export const Users = (props: UsersContainerPropsType) => {
             {props.users.map(user => <div key={user.id}>
                 <span>
                     <div>
-                        <img alt={"name"} src={user.photos.small != null ? user.photos.small : ""} className={styles.userPhoto}/>
+                        <img alt={"name"} src={user.photos.small != null ? user.photos.small : userPhoto}
+                             className={styles.userPhoto}/>
                     </div>
                     <div>
                             {user.followed

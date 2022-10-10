@@ -9,6 +9,7 @@ class Users extends React.Component <UsersContainerPropsType> {
     componentDidMount() {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
             this.props.setUser(response.data.items)
+            this.props.setTotalUsersCount(response.data.totalCount)
         });
     }
 
@@ -16,7 +17,6 @@ class Users extends React.Component <UsersContainerPropsType> {
         this.props.setCurrentPage(pageNumber);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
             this.props.setUser(response.data.items)
-            this.props.setTotalUsersCount(response.data.totalCount) // totalUsersCount ??? ОБРАТИТЬ ВНИМАНИЕ
         });
 
     }

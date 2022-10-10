@@ -12,6 +12,15 @@ class Users extends React.Component <UsersContainerPropsType> {
         });
     }
 
+    onPageChanged = (pageNumber: number) => {
+        this.props.setCurrentPage(pageNumber);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
+            this.props.setUser(response.data.items)
+            this.props.setTotalUsersCount(response.data.totalCount) // totalUsersCount ??? ОБРАТИТЬ ВНИМАНИЕ
+        });
+
+    }
+
     render() {
 
         const pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
@@ -24,9 +33,9 @@ class Users extends React.Component <UsersContainerPropsType> {
         return <div>
             <div>
                 {pages.map(p => {
-                    return <span key={p} className={this.props.currentPage === p ? styles.selectedPage : ""}
-                                 onClick={() => {
-                                     this.props.setCurrentPage(p)
+                    return <span key={p} className={this.props.currentPage === p ? styles.selectedPage : styles.page}
+                                 onClick={(e) => {
+                                     this.onPageChanged(p)
                                  }}>{p}</span>
                 })}
             </div>

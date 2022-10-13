@@ -28,13 +28,16 @@ export type InitialStateType = {
     pageSize: number,
     totalUsersCount: number,
     currentPage: number,
+    isFetching: boolean
 }
 
 const initialState: InitialStateType = {
     users: [],
     pageSize: 5,
     totalUsersCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: false
+
 }
 
 const UsersReducer = (state: InitialStateType = initialState, action: UsersActionsType): InitialStateType => {

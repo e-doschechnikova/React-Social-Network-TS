@@ -8,7 +8,7 @@ import {News} from "./components/News/News";
 import {Profile} from "./components/Profile/Profile";
 import {Setting} from "./components/Setting/Setting";
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
-import {UsersContainer} from "./components/Users/UsersContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 const App = () => {
     return (

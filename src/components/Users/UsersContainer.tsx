@@ -6,13 +6,13 @@ import {
     FollowAC,
     SetCurrentPageAC,
     SetTotalUsersCountAC,
-    SetUsersAC,
+    SetUsersAC, ToggleIsFetchingAC,
     UnfollowAC,
     UserType
 } from "../../Redux/UsersReducer";
 import axios from "axios";
 import {Users} from "./Users";
-import preloader from "../../img/preloader.gif"
+import {Preloader} from "../Common/Preloader";
 
 type MapStateToPropsType = {
     users: Array<UserType>,
@@ -27,36 +27,7 @@ type MapDispatchToPropsType = {
     setUser: (users: Array<UserType>) => void
     setCurrentPage: (pageNumber: number) => void,
     setTotalUsersCount: (totalCount: number) => void
-}
-
-class UsersContainer extends React.Component <UsersContainerPropsType> {
-
-    componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
-            this.props.setUser(response.data.items)
-            this.props.setTotalUsersCount(response.data.totalCount)
-        });
-    }
-
-    onPageChanged = (pageNumber: number) => {
-        this.props.setCurrentPage(pageNumber);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
-            this.props.setUser(response.data.items)
-        });
-    }
-
-    render() {
-        return <>
-            {this.props.isFetching ? <img src={preloader}/> : null}
-            <Users totalUsersCount={this.props.totalUsersCount}
-                   pageSize={this.props.pageSize}
-                   currentPage={this.props.currentPage}
-                   onPageChanged={this.onPageChanged}
-                   users={this.props.users}
-                   follow={this.props.follow}
-                   unfollow={this.props.unfollow}/>
-        </>
-    }
+    toggleIsFetching: (isFetching: boolean) => void
 }
 
 export type UsersContainerPropsType = MapStateToPropsType & MapDispatchToPropsType
@@ -87,7 +58,44 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
         },
         setTotalUsersCount: (totalCount: number) => {
             dispatch(SetTotalUsersCountAC(totalCount))
+        },
+        toggleIsFetching: (isFetching) => {
+            dispatch(ToggleIsFetchingAC(isFetching))
         }
+    }
+}
+
+class UsersContainer extends React.Component <UsersContainerPropsType> {
+
+    componentDidMount() {
+        this.props.toggleIsFetching(true)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+            this.props.toggleIsFetching(false)
+            this.props.setUser(response.data.items)
+            this.props.setTotalUsersCount(response.data.totalCount)
+        });
+    }
+
+    onPageChanged = (pageNumber: number) => {
+        this.props.setCurrentPage(pageNumber);
+        this.props.toggleIsFetching(true)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
+            this.props.toggleIsFetching(false)
+            this.props.setUser(response.data.items)
+        });
+    }
+
+    render() {
+        return <>
+            {this.props.isFetching ? <Preloader/> : null}
+            <Users totalUsersCount={this.props.totalUsersCount}
+                   pageSize={this.props.pageSize}
+                   currentPage={this.props.currentPage}
+                   onPageChanged={this.onPageChanged}
+                   users={this.props.users}
+                   follow={this.props.follow}
+                   unfollow={this.props.unfollow}/>
+        </>
     }
 }
 

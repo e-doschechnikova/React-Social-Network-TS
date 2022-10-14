@@ -1,7 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
 import {ReduxStateType} from "../../Redux/Redux-Store";
-import {Dispatch} from "redux";
 import {
     FollowAC,
     SetCurrentPageAC,
@@ -64,7 +63,6 @@ const mapStateToProps = (state: ReduxStateType): MapStateToPropsType => {
 //         }
 //     }
 // }
-
 
 class UsersContainer extends React.Component <UsersContainerPropsType> {
 

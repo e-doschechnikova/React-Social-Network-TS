@@ -33,7 +33,7 @@ class ProfileContainer extends React.Component <ProfileContainerPropsType> {
 
 //@ts-ignore
 const mapStateToProps = (state: ReduxStateType): MapStateToPropsType => ({
-    profile: state.profilePage.profile
+    profile: (state.profilePage.profile) as ProfileType
 })
 
 export default connect(mapStateToProps, {setUserProfileAC})(ProfileContainer)

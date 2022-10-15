@@ -14,7 +14,7 @@ export type PostType = {
     likesCount: number;
 };
 
-type ProfileType = {
+export type ProfileType = {
     aboutMe?: string
     contacts?: {
         facebook: string
@@ -39,7 +39,7 @@ type ProfileType = {
 export type ProfilePageStateType = {
     posts: Array<PostType>
     profile: ProfileType | null,
-    status: string
+    newPostText: string,
 }
 
 export type ProfileActionsTypes =
@@ -63,8 +63,8 @@ export const initialState: ProfilePageStateType = {
             likesCount: 1,
         },
     ],
+    newPostText: "hi",
     profile: null,
-    status: ""
 }
 
 const ProfileReducer = (state: ProfilePageStateType = initialState, action: ProfileActionsTypes) => {
@@ -83,7 +83,6 @@ const ProfileReducer = (state: ProfilePageStateType = initialState, action: Prof
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
         }
-
         default:
             return state;
     }

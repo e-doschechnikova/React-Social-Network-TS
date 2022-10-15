@@ -13,3 +13,6 @@ const rootReducers = combineReducers({
     usersPage: UsersReducer
 });
 export const store = createStore(rootReducers)
+
+//@ts-ignore
+window.store = store;

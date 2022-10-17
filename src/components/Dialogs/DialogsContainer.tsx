@@ -4,7 +4,7 @@ import {Dialogs} from "./Dialogs";
 import {ReduxStateType} from "../../Redux/Redux-Store";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
-import {sendMessageAC, updateNewMessageTextAC} from "../../Redux/DialogsReducer";
+import {sendMessageAC, updateNewMessageTextAC} from "../../Redux/dialogs-reducer";
 
 type mapStateToPropsType = {
     dialogsPage: DialogPageStateType

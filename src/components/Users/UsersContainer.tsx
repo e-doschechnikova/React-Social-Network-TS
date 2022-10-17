@@ -8,7 +8,7 @@ import {
     SetUsersAC, ToggleIsFetchingAC,
     UnfollowAC,
     UserType
-} from "../../Redux/UsersReducer";
+} from "../../Redux/users-reducer";
 import axios from "axios";
 import {Users} from "./Users";
 import {Preloader} from "../Common/Preloader";

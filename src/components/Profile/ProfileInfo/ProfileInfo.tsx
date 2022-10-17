@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./ProfileInfo.module.css";
-import {ProfileType} from "../../../Redux/ProfileReducer";
+import {ProfileType} from "../../../Redux/profile-reducer";
 import {Preloader} from "../../Common/Preloader";
 
 type ProfileInfoPropsType = {

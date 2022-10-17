@@ -1,5 +1,5 @@
 import {v1} from "uuid";
-import {sendMessageAC, updateNewMessageTextAC} from "./DialogsReducer";
+import {sendMessageAC, updateNewMessageTextAC} from "./dialogs-reducer";
 
 
 const ADD_POST = "ADD-POST";

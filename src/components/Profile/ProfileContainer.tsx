@@ -3,7 +3,7 @@ import {Profile} from "./Profile";
 import {connect} from "react-redux";
 import axios from "axios";
 import {ReduxStateType} from "../../Redux/Redux-Store";
-import {ProfileType, setUserProfileAC} from "../../Redux/ProfileReducer";
+import {ProfileType, setUserProfileAC} from "../../Redux/profile-reducer";
 import {withRouter} from "react-router-dom";
 
 type MapStateToPropsType = {

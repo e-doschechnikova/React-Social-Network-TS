@@ -40,6 +40,7 @@ export type ProfilePageStateType = {
     posts: Array<PostType>
     profile: ProfileType | null,
     newPostText: string,
+
 }
 
 export type ProfileActionsTypes =
@@ -65,6 +66,7 @@ export const initialState: ProfilePageStateType = {
     ],
     newPostText: "hi",
     profile: null,
+
 }
 
 const ProfileReducer = (state: ProfilePageStateType = initialState, action: ProfileActionsTypes) => {

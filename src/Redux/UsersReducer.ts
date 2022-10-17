@@ -51,7 +51,6 @@ const UsersReducer = (state: InitialStateType = initialState, action: UsersActio
                     return user
                 })
             }
-
         case UNFOLLOW:
             return {
                 ...state, users: state.users.map(user => {

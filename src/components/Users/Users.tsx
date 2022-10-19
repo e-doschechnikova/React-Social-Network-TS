@@ -3,7 +3,7 @@ import styles from "./Users.module.css";
 import userPhoto from "../../assets/images/UserPhoto.png";
 import {UserType} from "../../Redux/users-reducer";
 import {NavLink} from "react-router-dom";
-import {followUser, unfollowUser} from "../../api/api";
+import {usersAPI} from "../../api/api";
 
 type UsersPropsType = {
     users: Array<UserType>,
@@ -57,7 +57,7 @@ export const Users: React.FC<UsersPropsType> = ({
                     <div>
                             {user.followed
                                 ? <button onClick={() => {
-                                    followUser(user.id)
+                                    usersAPI.followUser(user.id)
                                         .then(data => {
                                             if (data.resultCode === 0) {
                                                 unfollow(user.id)
@@ -65,7 +65,7 @@ export const Users: React.FC<UsersPropsType> = ({
                                         });
                                 }}>Unfollow</button>
                                 : <button onClick={() => {
-                                    unfollowUser(user.id)
+                                    usersAPI.unfollowUser(user.id)
                                         .then(data => {
                                             if (data.resultCode === 0) {
                                                 follow(user.id)

@@ -2,16 +2,11 @@ import React from "react";
 import {connect} from "react-redux";
 import {ReduxStateType} from "../../Redux/Redux-Store";
 import {
-    FollowAC,
-    SetCurrentPageAC,
-    SetTotalUsersCountAC,
-    SetUsersAC, ToggleIsFetchingAC,
-    UnfollowAC,
-    UserType
+    FollowAC, SetCurrentPageAC, SetTotalUsersCountAC, SetUsersAC, ToggleIsFetchingAC, UnfollowAC, UserType
 } from "../../Redux/users-reducer";
-import axios from "axios";
 import {Users} from "./Users";
 import {Preloader} from "../Common/Preloader";
+import {getUsers} from "../../api/api";
 
 type MapStateToPropsType = {
     users: Array<UserType>,
@@ -45,20 +40,22 @@ class UsersContainer extends React.Component <UsersContainerPropsType> {
 
     componentDidMount() {
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {withCredentials: true}).then(response => {
-            this.props.toggleIsFetching(false)
-            this.props.setUser(response.data.items)
-            this.props.setTotalUsersCount(response.data.totalCount)
-        });
+        getUsers(this.props.currentPage, this.props.pageSize)
+            .then(data => {
+                this.props.toggleIsFetching(false)
+                this.props.setUser(data.items)
+                this.props.setTotalUsersCount(data.totalCount)
+            });
     }
 
     onPageChanged = (pageNumber: number) => {
         this.props.setCurrentPage(pageNumber);
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {withCredentials: true}).then(response => {
-            this.props.toggleIsFetching(false)
-            this.props.setUser(response.data.items)
-        });
+        getUsers(pageNumber, this.props.pageSize)
+            .then(data => {
+                this.props.toggleIsFetching(false)
+                this.props.setUser(data.items)
+            });
     }
 
     render() {

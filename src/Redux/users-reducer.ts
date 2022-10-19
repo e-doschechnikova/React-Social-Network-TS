@@ -1,5 +1,3 @@
-import React from 'react';
-
 const FOLLOW = "FOLLOW"
 const UNFOLLOW = "UNFOLLOW"
 const SET_USERS = "SET_USERS"
@@ -13,7 +11,7 @@ type LocationType = {
     country: string
 }
 export type UserType = {
-    id: string,
+    id: number,
     photos: {
         small: string,
         large: string
@@ -86,8 +84,8 @@ export type UsersActionsType =
     | ReturnType<typeof ToggleIsFetchingAC>
 
 
-export const FollowAC = (userId: string) => ({type: FOLLOW, userId}) as const
-export const UnfollowAC = (userId: string) => ({type: UNFOLLOW, userId}) as const
+export const FollowAC = (userId: number) => ({type: FOLLOW, userId}) as const
+export const UnfollowAC = (userId: number) => ({type: UNFOLLOW, userId}) as const
 export const SetUsersAC = (users: Array<UserType>) => ({type: SET_USERS, users}) as const
 export const SetCurrentPageAC = (currentPage: number) => ({type: SET_CURRENT_PAGE, currentPage}) as const
 export const SetTotalUsersCountAC = (totalUsersCount: number) => ({

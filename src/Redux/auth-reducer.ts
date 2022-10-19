@@ -1,17 +1,17 @@
-import React from 'react';
-
 const SET_USER_DATA = "SET_USER_DATA"
 
 export type AuthStateType = {
     userId: number | null,
     email: string | null,
-    login: string | null
+    login: string | null,
+    isAuth: boolean
 }
 
 const initialState: AuthStateType = {
     userId: null,
     email: null,
-    login: null
+    login: null,
+    isAuth: false
 }
 
 const AuthReducer = (state: AuthStateType = initialState, action: AuthActionsType): AuthStateType => {
@@ -19,7 +19,8 @@ const AuthReducer = (state: AuthStateType = initialState, action: AuthActionsTyp
         case SET_USER_DATA:
             return {
                 ...state,
-                ...action.data
+                ...action.data,
+                isAuth: true
             }
         default:
             return state
@@ -28,9 +29,9 @@ const AuthReducer = (state: AuthStateType = initialState, action: AuthActionsTyp
 
 
 export type AuthActionsType =
-    ReturnType<typeof setUserDataAC>
+    ReturnType<typeof setAuthUserDataAC>
 
-export const setUserDataAC = (userId: number, email: string, login: string) => ({
+export const setAuthUserDataAC = (userId: number, email: string, login: string) => ({
     type: SET_USER_DATA,
     data: {userId, email, login}
 })

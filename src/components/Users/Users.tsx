@@ -10,8 +10,8 @@ type UsersPropsType = {
     totalUsersCount: number,
     currentPage: number,
     onPageChanged: (page: number) => void
-    follow: (userId: string) => void,
-    unfollow: (userId: string) => void
+    follow: (userId: number) => void,
+    unfollow: (userId: number) => void
 
 }
 

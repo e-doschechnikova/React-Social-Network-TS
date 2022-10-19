@@ -44,7 +44,9 @@ export const Users: React.FC<UsersPropsType> = ({
                                  }}>{p}</span>
                 })}
             </div>
-            {users.map(user => <div key={user.id}>
+            {users.map(user => {
+                    console.log(user.followed)
+                    return (<div key={user.id}>
                 <span>
                     <div>
                      <NavLink to={"/profile/" + user.id}>
@@ -66,7 +68,7 @@ export const Users: React.FC<UsersPropsType> = ({
                                             unfollow(user.id)
                                         }
                                     });
-                                }}>follow</button>
+                                }}>Unfollow</button>
                                 : <button onClick={() => {
                                     axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {}, {
                                         withCredentials: true,
@@ -78,10 +80,10 @@ export const Users: React.FC<UsersPropsType> = ({
                                             follow(user.id)
                                         }
                                     });
-                                }}>unfollow</button>}
+                                }}>Follow</button>}
                     </div>
                 </span>
-                <span>
+                        <span>
                     <span>
                         <div>{user.name}</div>
                         <div>{user.status}</div>
@@ -91,7 +93,9 @@ export const Users: React.FC<UsersPropsType> = ({
                         <div>{"user.location.city"}</div>
                     </span>
                 </span>
-            </div>)}
+                    </div>)
+                }
+            )}
         </div>
     );
 };

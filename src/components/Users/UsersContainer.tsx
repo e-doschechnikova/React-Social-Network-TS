@@ -41,29 +41,6 @@ const mapStateToProps = (state: ReduxStateType): MapStateToPropsType => {
     }
 }
 
-// const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
-//     return {
-//         follow: (userId: string) => {
-//             dispatch(FollowAC(userId))
-//         },
-//         unfollow: (userId: string) => {
-//             dispatch(UnfollowAC(userId))
-//         },
-//         setUser: (users: Array<UserType>) => {
-//             dispatch(SetUsersAC(users))
-//         },
-//         setCurrentPage: (pageNumber: number) => {
-//             dispatch(SetCurrentPageAC(pageNumber))
-//         },
-//         setTotalUsersCount: (totalCount: number) => {
-//             dispatch(SetTotalUsersCountAC(totalCount))
-//         },
-//         toggleIsFetching: (isFetching) => {
-//             dispatch(ToggleIsFetchingAC(isFetching))
-//         }
-//     }
-// }
-
 class UsersContainer extends React.Component <UsersContainerPropsType> {
 
     componentDidMount() {
@@ -104,4 +81,28 @@ export default connect(mapStateToProps, {
     setTotalUsersCount: SetTotalUsersCountAC,
     toggleIsFetching: ToggleIsFetchingAC
 })(UsersContainer)
+
+
+// const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToPropsType => {
+//     return {
+//         follow: (userId: string) => {
+//             dispatch(FollowAC(userId))
+//         },
+//         unfollow: (userId: string) => {
+//             dispatch(UnfollowAC(userId))
+//         },
+//         setUser: (users: Array<UserType>) => {
+//             dispatch(SetUsersAC(users))
+//         },
+//         setCurrentPage: (pageNumber: number) => {
+//             dispatch(SetCurrentPageAC(pageNumber))
+//         },
+//         setTotalUsersCount: (totalCount: number) => {
+//             dispatch(SetTotalUsersCountAC(totalCount))
+//         },
+//         toggleIsFetching: (isFetching) => {
+//             dispatch(ToggleIsFetchingAC(isFetching))
+//         }
+//     }
+// }
 

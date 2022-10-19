@@ -11,7 +11,7 @@ type MapStateToPropsType = {
 }
 
 type MapDispatchToPropsType = {
-    setAuthUserDataAC: () => void
+    setAuthUserDataAC: (id: number, email: string, login: string) => void
 }
 
 type HeaderContainerPropsType = MapStateToPropsType & MapDispatchToPropsType

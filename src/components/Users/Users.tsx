@@ -13,8 +13,8 @@ type UsersPropsType = {
     onPageChanged: (page: number) => void
     follow: (userId: number) => void,
     unfollow: (userId: number) => void,
-    followingInProgress: boolean,
-    toggleFollowingProgress: (isFetching: boolean) => void
+    followingInProgress: Array<number>,
+    toggleFollowingProgress: (isFetching: boolean, id: number) => void
 }
 
 
@@ -59,24 +59,24 @@ export const Users: React.FC<UsersPropsType> = ({
                     </div>
                     <div>
                             {user.followed
-                                ? <button disabled={followingInProgress} onClick={() => {
-                                    toggleFollowingProgress(true)
+                                ? <button disabled={followingInProgress.some(id => id === user.id)} onClick={() => {
+                                    toggleFollowingProgress(true, user.id)
                                     usersAPI.followUser(user.id)
                                         .then(data => {
                                             if (data.resultCode === 0) {
                                                 unfollow(user.id)
                                             }
-                                            toggleFollowingProgress(false)
+                                            toggleFollowingProgress(false, user.id)
                                         });
                                 }}>Unfollow</button>
-                                : <button disabled={followingInProgress} onClick={() => {
-                                    toggleFollowingProgress(true)
+                                : <button disabled={followingInProgress.some(id => id === user.id)} onClick={() => {
+                                    toggleFollowingProgress(true, user.id)
                                     usersAPI.unfollowUser(user.id)
                                         .then(data => {
                                             if (data.resultCode === 0) {
                                                 follow(user.id)
                                             }
-                                            toggleFollowingProgress(false)
+                                            toggleFollowingProgress(false, user.id)
                                         });
                                 }}>Follow</button>}
                     </div>

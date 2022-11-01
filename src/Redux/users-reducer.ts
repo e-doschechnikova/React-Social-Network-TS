@@ -135,4 +135,30 @@ export const GetUsersTC = (currentPage: number, pageSize: number) => {
     };
 }
 
+export const FollowTC = (userId: number) => {
+    return (dispatch: Dispatch) => {
+        dispatch(ToggleFollowingProgressAC(true, userId))
+        usersAPI.unfollowUser(userId)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispatch(FollowAC(userId))
+                }
+                dispatch(ToggleFollowingProgressAC(false, userId))
+            })
+    }
+}
+
+export const UnfollowTC = (userId: number) => {
+    return (dispatch: Dispatch) => {
+        dispatch(ToggleFollowingProgressAC(true, userId))
+        usersAPI.followUser(userId)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispatch(UnfollowAC(userId))
+                }
+                dispatch(ToggleFollowingProgressAC(false, userId))
+            })
+    }
+}
+
 export default UsersReducer;

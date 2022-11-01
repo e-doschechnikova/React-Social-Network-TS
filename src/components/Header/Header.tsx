@@ -7,7 +7,7 @@ type HeaderPropsType = {
     login: string | null
 }
 
-const imageSrc = require("../../img/logo.png");
+const imageSrc = require("../../assets/images/logo.png");
 // declare function require(name: string): string;
 
 export const Header = ({isAuth, login}: HeaderPropsType) => {

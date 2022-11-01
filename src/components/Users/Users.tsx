@@ -11,8 +11,8 @@ type UsersPropsType = {
     currentPage: number,
     onPageChanged: (page: number) => void
     followingInProgress: Array<number>,
-    FollowTC: (userId: number) => void,
-    UnfollowTC: (userId: number) => void
+    followTC: (userId: number) => void,
+    unfollowTC: (userId: number) => void
 }
 
 export const Users: React.FC<UsersPropsType> = ({
@@ -22,7 +22,7 @@ export const Users: React.FC<UsersPropsType> = ({
                                                     currentPage,
                                                     onPageChanged,
                                                     followingInProgress,
-                                                    FollowTC, UnfollowTC
+                                                    followTC, unfollowTC
                                                 }) => {
     const pagesCount = Math.ceil(totalUsersCount / pageSize);
 
@@ -55,10 +55,10 @@ export const Users: React.FC<UsersPropsType> = ({
                     <div>
                             {user.followed
                                 ? <button disabled={followingInProgress.some(id => id === user.id)} onClick={() => {
-                                    UnfollowTC(user.id)
+                                    unfollowTC(user.id)
                                 }}>Unfollow</button>
                                 : <button disabled={followingInProgress.some(id => id === user.id)} onClick={() => {
-                                    FollowTC(user.id)
+                                    followTC(user.id)
                                 }}>Follow</button>}
                     </div>
                 </span>

@@ -111,4 +111,10 @@ export const setUserProfileAC = (profile: ProfileType) => {
     } as const;
 }
 
+///------------------------- Thunk Creators ------------------------------------\\\
+
+export const getUserProfileTC = (userId: number) => {
+
+}
+
 export default ProfileReducer

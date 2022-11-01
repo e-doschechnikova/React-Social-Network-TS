@@ -91,30 +91,30 @@ const UsersReducer = (state: InitialStateType = initialState, action: UsersActio
 
 
 export type UsersActionsType =
-    ReturnType<typeof FollowAC>
-    | ReturnType<typeof UnfollowAC>
-    | ReturnType<typeof SetUsersAC>
-    | ReturnType<typeof SetCurrentPageAC>
-    | ReturnType<typeof SetTotalUsersCountAC>
-    | ReturnType<typeof ToggleIsFetchingAC>
-    | ReturnType<typeof ToggleFollowingProgressAC>
+    ReturnType<typeof followAC>
+    | ReturnType<typeof unfollowAC>
+    | ReturnType<typeof setUsersAC>
+    | ReturnType<typeof setCurrentPageAC>
+    | ReturnType<typeof setTotalUsersCountAC>
+    | ReturnType<typeof toggleIsFetchingAC>
+    | ReturnType<typeof toggleFollowingProgressAC>
 
 
 ///------------------------- Action Creators ------------------------------------\\\
 
-export const FollowAC = (userId: number) => ({type: FOLLOW, userId}) as const
-export const UnfollowAC = (userId: number) => ({type: UNFOLLOW, userId}) as const
-export const SetUsersAC = (users: Array<UserType>) => ({type: SET_USERS, users}) as const
-export const SetCurrentPageAC = (currentPage: number) => ({type: SET_CURRENT_PAGE, currentPage}) as const
-export const SetTotalUsersCountAC = (totalUsersCount: number) => ({
+export const followAC = (userId: number) => ({type: FOLLOW, userId}) as const
+export const unfollowAC = (userId: number) => ({type: UNFOLLOW, userId}) as const
+export const setUsersAC = (users: Array<UserType>) => ({type: SET_USERS, users}) as const
+export const setCurrentPageAC = (currentPage: number) => ({type: SET_CURRENT_PAGE, currentPage}) as const
+export const setTotalUsersCountAC = (totalUsersCount: number) => ({
     type: SET_TOTAL_USERS_COUNT,
     count: totalUsersCount
 }) as const
-export const ToggleIsFetchingAC = (isFetching: boolean) => ({
+export const toggleIsFetchingAC = (isFetching: boolean) => ({
     type: TOGGLE_IS_FETCHING,
     isFetching
 }) as const
-export const ToggleFollowingProgressAC = (isFetching: boolean, userId: number) => ({
+export const toggleFollowingProgressAC = (isFetching: boolean, userId: number) => ({
     type: TOGGLE_IS_FOLLOWING_PROGRESS,
     isFetching,
     userId
@@ -122,41 +122,41 @@ export const ToggleFollowingProgressAC = (isFetching: boolean, userId: number) =
 
 ///------------------------- Thunk Creators ------------------------------------\\\
 
-export const GetUsersTC = (currentPage: number, pageSize: number) => {
+export const getUsersTC = (currentPage: number, pageSize: number) => {
     return (dispatch: Dispatch) => {
-        dispatch(ToggleIsFetchingAC(true))
+        dispatch(toggleIsFetchingAC(true))
 
         usersAPI.getUsers(currentPage, pageSize)
             .then(data => {
-                dispatch(ToggleIsFetchingAC(false))
-                dispatch(SetUsersAC(data.items))
-                dispatch(SetTotalUsersCountAC(data.totalCount))
+                dispatch(toggleIsFetchingAC(false))
+                dispatch(setUsersAC(data.items))
+                dispatch(setTotalUsersCountAC(data.totalCount))
             });
     };
 }
 
-export const FollowTC = (userId: number) => {
+export const followTC = (userId: number) => {
     return (dispatch: Dispatch) => {
-        dispatch(ToggleFollowingProgressAC(true, userId))
+        dispatch(toggleFollowingProgressAC(true, userId))
         usersAPI.unfollowUser(userId)
             .then(data => {
                 if (data.resultCode === 0) {
-                    dispatch(FollowAC(userId))
+                    dispatch(followAC(userId))
                 }
-                dispatch(ToggleFollowingProgressAC(false, userId))
+                dispatch(toggleFollowingProgressAC(false, userId))
             })
     }
 }
 
-export const UnfollowTC = (userId: number) => {
+export const unfollowTC = (userId: number) => {
     return (dispatch: Dispatch) => {
-        dispatch(ToggleFollowingProgressAC(true, userId))
+        dispatch(toggleFollowingProgressAC(true, userId))
         usersAPI.followUser(userId)
             .then(data => {
                 if (data.resultCode === 0) {
-                    dispatch(UnfollowAC(userId))
+                    dispatch(unfollowAC(userId))
                 }
-                dispatch(ToggleFollowingProgressAC(false, userId))
+                dispatch(toggleFollowingProgressAC(false, userId))
             })
     }
 }

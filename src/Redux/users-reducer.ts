@@ -1,3 +1,6 @@
+import {Dispatch} from "redux";
+import {usersAPI} from "../api/api";
+
 const FOLLOW = "FOLLOW"
 const UNFOLLOW = "UNFOLLOW"
 const SET_USERS = "SET_USERS"
@@ -97,6 +100,8 @@ export type UsersActionsType =
     | ReturnType<typeof ToggleFollowingProgressAC>
 
 
+///------------------------- Action Creators ------------------------------------\\\
+
 export const FollowAC = (userId: number) => ({type: FOLLOW, userId}) as const
 export const UnfollowAC = (userId: number) => ({type: UNFOLLOW, userId}) as const
 export const SetUsersAC = (users: Array<UserType>) => ({type: SET_USERS, users}) as const
@@ -114,4 +119,20 @@ export const ToggleFollowingProgressAC = (isFetching: boolean, userId: number) =
     isFetching,
     userId
 }) as const
+
+///------------------------- Thunk Creators ------------------------------------\\\
+
+export const GetUsersTC = (currentPage: number, pageSize: number) => {
+    return (dispatch: Dispatch) => {
+        dispatch(ToggleIsFetchingAC(true))
+
+        usersAPI.getUsers(currentPage, pageSize)
+            .then(data => {
+                dispatch(ToggleIsFetchingAC(false))
+                dispatch(SetUsersAC(data.items))
+                dispatch(SetTotalUsersCountAC(data.totalCount))
+            });
+    };
+}
+
 export default UsersReducer;

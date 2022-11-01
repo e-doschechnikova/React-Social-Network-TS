@@ -1,7 +1,6 @@
-import DialogsReducer, {sendMessageAC, updateNewMessageTextAC} from "./dialogs-reducer";
-import ProfileReducer, {addPostAC, PostType, updateNewPostTextAC} from "./profile-reducer";
-import SidebarReducer from "./sidebar-reducer";
-import {v1} from "uuid";
+import {sendMessageAC, updateNewMessageTextAC} from "./dialogs-reducer";
+import {addPostAC, PostType, updateNewPostTextAC} from "./profile-reducer";
+
 ///------------------------- type for state ----------------------------------\\\
 
 type MessageStateType = {

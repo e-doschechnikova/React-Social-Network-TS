@@ -90,7 +90,7 @@ const ProfileReducer = (state: ProfilePageStateType = initialState, action: Prof
     }
 }
 
-///-------------------------- AC --------------------------///
+///-------------------------- Action Creators --------------------------///
 
 export const addPostAC = () => {
     return {

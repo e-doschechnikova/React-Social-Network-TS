@@ -39,6 +39,8 @@ const DialogsReducer = (state: DialogPageStateType = initialState, action: Actio
     }
 };
 
+///-------------------------- Action Creators --------------------------///
+
 export const sendMessageAC = () => {
     return {
         type: SEND_MESSAGE,

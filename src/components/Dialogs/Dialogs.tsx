@@ -23,7 +23,7 @@ export const Dialogs = (props: DialogsPropsType) => {
 
     };
     // eslint-disable-next-line react/jsx-no-undef
-    if (props.isAuth === false) return <Redirect to="/login"/>
+    if (!props.isAuth) return <Redirect to="/login"/>
 
     return (
         <div className={styles.dialogs}>

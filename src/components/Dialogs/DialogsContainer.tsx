@@ -7,7 +7,8 @@ import {Dispatch} from "redux";
 import {sendMessageAC, updateNewMessageTextAC} from "../../Redux/dialogs-reducer";
 
 type mapStateToPropsType = {
-    dialogsPage: DialogPageStateType
+    dialogsPage: DialogPageStateType,
+    isAuth: boolean
 }
 type mapDispatchToPropsType = {
     messageForNewMessage: (text: string) => void
@@ -17,7 +18,8 @@ export type DialogsPropsType = mapStateToPropsType & mapDispatchToPropsType
 
 const mapStateToProps = (state: ReduxStateType): mapStateToPropsType => {
     return {
-        dialogsPage: state.dialogsPage
+        dialogsPage: state.dialogsPage,
+        isAuth: state.auth.isAuth
     }
 }
 const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {

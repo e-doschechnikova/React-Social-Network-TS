@@ -45,6 +45,6 @@ const mapStateToProps = (state: ReduxStateType): MapStateToPropsType => ({
     isAuth: state.auth.isAuth
 })
 
-const WithUrlDataContainerComponent = withRouter(ProfileContainer)
+const WithUrlDataContainerComponent = withRouter(AuthRedirectComponent)
 
 export default connect(mapStateToProps, {getUserProfileTC})(WithUrlDataContainerComponent)

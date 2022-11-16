@@ -3,7 +3,6 @@ import {DialogItem} from "./DialogItem/DialogItem";
 import styles from "./Dialogs.module.css";
 import {Message} from "./Message/Message";
 import {DialogsPropsType} from "./DialogsContainer";
-import {Redirect} from "react-router-dom";
 
 export const Dialogs = (props: DialogsPropsType) => {
 
@@ -22,8 +21,6 @@ export const Dialogs = (props: DialogsPropsType) => {
         props.messageForNewMessage(event.currentTarget.value)
 
     };
-    // eslint-disable-next-line react/jsx-no-undef
-    if (!props.isAuth) return <Redirect to="/login"/>
 
     return (
         <div className={styles.dialogs}>

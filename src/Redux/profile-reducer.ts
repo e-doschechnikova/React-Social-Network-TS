@@ -71,7 +71,6 @@ export const setStatusAC = (status: string) => {
     } as const;
 }
 
-
 ///----------- thunks creators -----------\\\
 export const getUserProfileTC = (userId: number) => (dispatch: Dispatch) => {
     profileAPI.getProfile(userId).then(data => {

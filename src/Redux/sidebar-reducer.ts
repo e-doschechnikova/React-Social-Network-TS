@@ -1,7 +1,7 @@
-import {ActionsTypes, SidebarFriendsStateType} from "./Store";
 import {v1} from "uuid";
 
 const initialState: SidebarFriendsStateType = {
+
     sidebarForFriends: [
         {
 
@@ -25,8 +25,19 @@ const initialState: SidebarFriendsStateType = {
     ],
 }
 
-const SidebarReducer = (state: SidebarFriendsStateType = initialState, action: ActionsTypes) => {
+const SidebarReducer = (state: SidebarFriendsStateType = initialState, action: any) => {
     return state;
 };
+
+///----------- types -----------\\\
+type SidebarforFriendsStateType = {
+    id: string;
+    name: string;
+    avatar: string;
+};
+export type SidebarFriendsStateType = {
+    sidebarForFriends: Array<SidebarforFriendsStateType>;
+};
+
 
 export default SidebarReducer;

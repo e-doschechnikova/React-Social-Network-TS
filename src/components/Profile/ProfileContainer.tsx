@@ -12,21 +12,29 @@ class ProfileContainer extends React.Component <ProfileContainerPropsType> {
 
     componentDidMount() {
         let userId = this.props.match.params.userId
+        if (!userId) {
+            userId = 24887
+        }
+
         this.props.getUserProfileTC(userId)
         this.props.getStatusTC(userId)
     }
+
     render() {
         return (
-            <Profile {...this.props} profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatusTC}/>
+            <Profile {...this.props} profile={this.props.profile} status={this.props.status}
+                     updateStatusTC={this.props.updateStatusTC}/>
         )
     }
 }
+
 //@ts-ignore
 const mapStateToProps = (state: ReduxStateType): MapStateToPropsType => ({
     profile: (state.profilePage.profile) as ProfileType,
     status: (state.profilePage.status),
     isAuth: state.auth.isAuth
 })
+
 ///----------- type -----------\\\
 type PathParamsType = {
     userId: number
@@ -41,7 +49,7 @@ type MapStateToPropsType = {
 type MapDispatchToProps = {
     getUserProfileTC: (userId: number) => void
     getStatusTC: (userId: number) => void,
-    updateStatusTC: (status:string) => void
+    updateStatusTC: (status: string) => void
 }
 type MapProfileContainerPropsType = MapDispatchToProps & MapStateToPropsType
 

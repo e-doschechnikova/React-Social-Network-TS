@@ -13,7 +13,6 @@ export const Dialogs = (props: DialogsPropsType) => {
         <Message key={message.id} message={message.message}/>
     ));
     const newMessageText = props.dialogsPage.messageForNewMessage;
-
     const onSendMessageClick = () => {
         props.sendMessage();
     };

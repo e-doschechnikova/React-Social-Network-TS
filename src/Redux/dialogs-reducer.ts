@@ -1,4 +1,3 @@
-import {ActionsTypes, DialogPageStateType} from "./Store";
 import {v1} from "uuid";
 
 const UPDATE_FOR_NEW_MESSAGE = "UPDATE-FOR-NEW-MESSAGE";
@@ -39,19 +38,35 @@ const DialogsReducer = (state: DialogPageStateType = initialState, action: Actio
     }
 };
 
-///-------------------------- Action Creators --------------------------///
-
+///----------- action creators -----------\\\
 export const sendMessageAC = () => {
     return {
         type: SEND_MESSAGE,
     } as const;
 };
-
 export const updateNewMessageTextAC = (newMessage: string) => {
     return {
         type: UPDATE_FOR_NEW_MESSAGE,
         newMessage: newMessage,
     } as const;
 };
+
+///----------- types -----------\\\
+type MessageStateType = {
+    id: string;
+    message: string;
+};
+type DialogStateType = {
+    id: string;
+    name: string;
+};
+export type DialogPageStateType = {
+    dialogs: Array<DialogStateType>;
+    messages: Array<MessageStateType>;
+    messageForNewMessage: string
+}
+export type ActionsTypes =
+    | ReturnType<typeof sendMessageAC>
+    | ReturnType<typeof updateNewMessageTextAC>;
 
 export default DialogsReducer;

@@ -2,15 +2,11 @@ import React from "react";
 import styles from "./Header.module.css";
 import {NavLink} from "react-router-dom";
 
-type HeaderPropsType = {
-    isAuth: boolean,
-    login: string | null
-}
+export const Header = ({isAuth, login}: HeaderPropsType) => {
 
-const imageSrc = require("../../assets/images/logo.png");
+    const imageSrc = require("../../assets/images/logo.png");
 // declare function require(name: string): string;
 
-export const Header = ({isAuth, login}: HeaderPropsType) => {
     return (
         <header className={styles.header}>
             <img src={imageSrc} alt=""/>
@@ -21,3 +17,9 @@ export const Header = ({isAuth, login}: HeaderPropsType) => {
         </header>
     );
 };
+
+///----------- type -----------\\\
+type HeaderPropsType = {
+    isAuth: boolean,
+    login: string | null
+}

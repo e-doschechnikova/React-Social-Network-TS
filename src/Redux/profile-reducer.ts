@@ -6,6 +6,7 @@ import {profileAPI} from "../api/api";
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const SET_USER_PROFILE = "SET_USER_PROFILE"
+const SET_STATUS = "SET_STATUS "
 
 export const initialState: ProfilePageStateType = {
     posts: [
@@ -21,6 +22,7 @@ export const initialState: ProfilePageStateType = {
     ],
     newPostText: "hi",
     profile: null,
+    status: ""
 
 }
 
@@ -38,49 +40,64 @@ const ProfileReducer = (state: ProfilePageStateType = initialState, action: Prof
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
         }
+        case SET_STATUS: {
+            return {...state, status: action.status}
+        }
         default:
             return state;
     }
 }
 
-///-------------------------- Action Creators --------------------------///
-
+///----------- action creators -----------\\\
 export const addPostAC = () => {
     return {
         type: ADD_POST,
     } as const;
 };
-
 export const updateNewPostTextAC = (newText: string) => {
     return {
         type: UPDATE_NEW_POST_TEXT,
         newText: newText,
     } as const;
 };
-
 export const setUserProfileAC = (profile: ProfileType) => {
     return {
         type: SET_USER_PROFILE, profile
     } as const;
 }
+export const setStatusAC = (status: string) => {
+    return {
+        type: SET_STATUS, status
+    } as const;
+}
 
-///------------------------- Thunk Creators ------------------------------------\\\
 
+///----------- thunks creators -----------\\\
 export const getUserProfileTC = (userId: number) => (dispatch: Dispatch) => {
     profileAPI.getProfile(userId).then(data => {
         dispatch(setUserProfileAC(data))
 
     });
 }
+export const getStatusTC = (userId: number) => (dispatch: Dispatch) => {
+    profileAPI.getStatus(userId).then(res => {
+        dispatch(setStatusAC(res.data))
+    });
+}
+export const updateStatusTC = (status: string) => (dispatch: Dispatch) => {
+    profileAPI.updateStatus(status).then(res => {
+        if (res.data.resultCode === 0) {
+            dispatch(setStatusAC(status))
+        }
+    });
+}
 
-///------------------------- types ------------------------------------\\\
-
+///----------- types -----------\\\
 export type PostType = {
     id: string;
     post: string;
     likesCount: number;
 };
-
 export type ProfileType = {
     aboutMe?: string
     contacts?: {
@@ -102,19 +119,18 @@ export type ProfileType = {
         large: string
     }
 }
-
 export type ProfilePageStateType = {
     posts: Array<PostType>
     profile: ProfileType | null,
     newPostText: string,
-
+    status: string
 }
-
 export type ProfileActionsTypes =
     | ReturnType<typeof addPostAC>
     | ReturnType<typeof updateNewPostTextAC>
     | ReturnType<typeof sendMessageAC>
     | ReturnType<typeof updateNewMessageTextAC>
     | ReturnType<typeof setUserProfileAC>
+    | ReturnType<typeof setStatusAC>
 
 export default ProfileReducer

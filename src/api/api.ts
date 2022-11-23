@@ -1,5 +1,4 @@
 import axios from "axios";
-import exp from "constants";
 
 const instance = axios.create({
     withCredentials: true,
@@ -24,17 +23,29 @@ export const usersAPI = {
             .then(response => response.data)
     },
 }
-
 export const profileAPI = {
     getProfile(userId: number) {
-        return instance.get(`profile/` + userId)
+        return instance.get(`profile/${userId}`)
             .then(response => response.data)
+    },
+    getStatus(userId: number) {
+        return instance.get(`profile/status/${userId}`)
+    },
+    updateStatus(status: string) {
+        return instance.put(`profile/status/`, {status})
     }
 }
 
 export const authAPI = {
-    me () {
+    me() {
         return instance.get(`auth/me`,)
     }
 }
 
+///----------- type -----------\\\
+export type ResponseType<T = {}> = {
+    data: T
+    messages: string[]
+    fieldsErrors: string[]
+    resultCode: number
+}

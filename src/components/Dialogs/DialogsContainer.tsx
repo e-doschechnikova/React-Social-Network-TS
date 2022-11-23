@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 import {compose, Dispatch} from "redux";
 import {sendMessageAC, updateNewMessageTextAC} from "../../Redux/dialogs-reducer";
 
-import {withAuthRedirect} from "../../Hoc/withAuthRedirect";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 type mapStateToPropsType = {
     dialogsPage: DialogPageStateType,

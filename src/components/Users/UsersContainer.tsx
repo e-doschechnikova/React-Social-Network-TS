@@ -6,7 +6,7 @@ import {
 } from "../../Redux/users-reducer";
 import {Users} from "./Users";
 import {Preloader} from "../Common/Preloader";
-import {withAuthRedirect} from "../../Hoc/withAuthRedirect";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
 

@@ -5,6 +5,7 @@ import {NavLink} from "react-router-dom";
 export const Header = ({isAuth, login}: HeaderPropsType) => {
 
     const imageSrc = require("../../assets/images/logo.png");
+    const imageSrcLogo = require("../../assets/images/logo1.png");
 // declare function require(name: string): string;
 
     return (

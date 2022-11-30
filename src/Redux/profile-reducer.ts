@@ -4,7 +4,6 @@ import {Dispatch} from "redux";
 import {profileAPI} from "../api/api";
 
 const ADD_POST = "ADD-POST";
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const SET_USER_PROFILE = "SET_USER_PROFILE"
 const SET_STATUS = "SET_STATUS "
 
@@ -20,7 +19,6 @@ export const initialState: ProfilePageStateType = {
             likesCount: 1,
         },
     ],
-    newPostText: "hi",
     profile: null,
     status: ""
 
@@ -30,12 +28,8 @@ const ProfileReducer = (state: ProfilePageStateType = initialState, action: Prof
     switch (action.type) {
         case ADD_POST:
             return {
-                ...state, posts: [...state.posts, {id: v1(), post: state.newPostText, likesCount: 0}],
+                ...state, posts: [...state.posts, {id: v1(), post: action.newPostText, likesCount: 0}],
                 newPostText: ""
-            }
-        case UPDATE_NEW_POST_TEXT:
-            return {
-                ...state, newPostText: action.newText
             }
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
@@ -49,15 +43,9 @@ const ProfileReducer = (state: ProfilePageStateType = initialState, action: Prof
 }
 
 ///----------- action creators -----------\\\
-export const addPostAC = () => {
+export const addPostAC = (newPostText: string) => {
     return {
-        type: ADD_POST,
-    } as const;
-};
-export const updateNewPostTextAC = (newText: string) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newText: newText,
+        type: ADD_POST, newPostText
     } as const;
 };
 export const setUserProfileAC = (profile: ProfileType) => {
@@ -121,12 +109,10 @@ export type ProfileType = {
 export type ProfilePageStateType = {
     posts: Array<PostType>
     profile: ProfileType | null,
-    newPostText: string,
     status: string
 }
 export type ProfileActionsTypes =
     | ReturnType<typeof addPostAC>
-    | ReturnType<typeof updateNewPostTextAC>
     | ReturnType<typeof sendMessageAC>
     | ReturnType<typeof updateNewMessageTextAC>
     | ReturnType<typeof setUserProfileAC>

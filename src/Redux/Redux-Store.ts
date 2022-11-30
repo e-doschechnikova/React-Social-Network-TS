@@ -5,6 +5,7 @@ import SidebarReducer from "./sidebar-reducer";
 import UsersReducer from "./users-reducer";
 import AuthReducer from "./auth-reducer";
 import thunkMiddleware from "redux-thunk";
+import {reducer as formReducer} from "redux-form";
 
 export type ReduxStateType = ReturnType<typeof rootReducers>
 
@@ -13,7 +14,8 @@ const rootReducers = combineReducers({
     dialogsPage: DialogsReducer,
     sidebar: SidebarReducer,
     usersPage: UsersReducer,
-    auth: AuthReducer
+    auth: AuthReducer,
+    form: formReducer
 });
 export const store = createStore(rootReducers, applyMiddleware(thunkMiddleware))
 

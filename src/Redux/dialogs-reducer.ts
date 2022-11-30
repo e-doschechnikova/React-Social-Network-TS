@@ -17,8 +17,7 @@ const initialState: DialogPageStateType = {
         {id: v1(), message: "OK!"},
         {id: v1(), message: "See you later!"},
         {id: v1(), message: "Bye!"},
-    ],
-    messageForNewMessage: "",
+    ]
 }
 
 const DialogsReducer = (state: DialogPageStateType = initialState, action: ActionsTypes) => {
@@ -28,10 +27,10 @@ const DialogsReducer = (state: DialogPageStateType = initialState, action: Actio
                 ...state, messageForNewMessage: action.newMessage
             }
         case SEND_MESSAGE:
+
             return {
                 ...state,
-                messages: [...state.messages, {id: v1(), message: state.messageForNewMessage}],
-                messageForNewMessage: ""
+                messages: [...state.messages, {id: v1(), message: action.newMessageText}]
             }
         default:
             return state;
@@ -39,9 +38,10 @@ const DialogsReducer = (state: DialogPageStateType = initialState, action: Actio
 };
 
 ///----------- action creators -----------\\\
-export const sendMessageAC = () => {
+export const sendMessageAC = (newMessageText: string
+) => {
     return {
-        type: SEND_MESSAGE,
+        type: SEND_MESSAGE, newMessageText
     } as const;
 };
 export const updateNewMessageTextAC = (newMessage: string) => {
@@ -63,7 +63,6 @@ type DialogStateType = {
 export type DialogPageStateType = {
     dialogs: Array<DialogStateType>;
     messages: Array<MessageStateType>;
-    messageForNewMessage: string
 }
 export type ActionsTypes =
     | ReturnType<typeof sendMessageAC>

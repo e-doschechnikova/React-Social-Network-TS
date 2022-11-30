@@ -35,7 +35,7 @@ const mapStateToProps = (state: ReduxStateType): MapStateToPropsType => ({
     isAuth: state.auth.isAuth
 })
 
-///----------- type -----------\\\
+///----------- types -----------\\\
 type PathParamsType = {
     userId: number
 }

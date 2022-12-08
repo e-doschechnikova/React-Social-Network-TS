@@ -5,7 +5,7 @@ import {loginTC} from "../../Redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 import {ReduxStateType} from "../../Redux/Redux-Store";
 
-const Login = (props: any) => {
+const Login = (props: LoginPropsType) => {
     const onSubmit = (formData: FormDataType) => {
         props.loginTC(formData.email, formData.password, formData.rememberMe)
         console.log(formData)
@@ -26,11 +26,12 @@ const mapStateToProps = (state: ReduxStateType): mapStateToPropsType => ({
 })
 
 ///----------- types -----------\\\
+type LoginPropsType = mapStateToPropsType & mapDispatchToPropsType
 type mapStateToPropsType = {
     isAuth: boolean
 }
 type mapDispatchToPropsType = {
-    loginTC: (email: string, password: string, rememberMe: boolean) => void
+    loginTC: (email: string, password: string, rememberMe: boolean) => void,
 }
 
 

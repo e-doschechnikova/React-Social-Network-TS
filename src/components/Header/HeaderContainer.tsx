@@ -1,7 +1,7 @@
 import React from "react";
 import {Header} from "./Header";
 import {connect} from "react-redux";
-import {getAuthUserDataTC} from "../../Redux/auth-reducer";
+import {getAuthUserDataTC, logoutTC} from "../../Redux/auth-reducer";
 import {ReduxStateType} from "../../Redux/Redux-Store";
 
 class HeaderContainer extends React.Component <HeaderContainerPropsType> {
@@ -11,7 +11,7 @@ class HeaderContainer extends React.Component <HeaderContainerPropsType> {
     }
 
     render() {
-        return <Header {...this.props}/>
+        return <Header isAuth={this.props.isAuth} login={this.props.login} logout={this.props.logoutTC}/>
     }
 }
 
@@ -26,8 +26,9 @@ type MapStateToPropsType = {
     login: string | null
 }
 type MapDispatchToPropsType = {
-    getAuthUserDataTC: () => void
+    getAuthUserDataTC: () => void,
+    logoutTC: () => void
 }
 type HeaderContainerPropsType = MapStateToPropsType & MapDispatchToPropsType
 
-export default connect(mapStateToProps, {getAuthUserDataTC})(HeaderContainer)
+export default connect(mapStateToProps, {getAuthUserDataTC, logoutTC})(HeaderContainer)

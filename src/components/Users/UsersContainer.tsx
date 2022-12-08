@@ -5,7 +5,7 @@ import {
     followTC, getUsersTC, setCurrentPageAC, toggleFollowingProgressAC, unfollowTC, UserType
 } from "../../Redux/users-reducer";
 import {Users} from "./Users";
-import {Preloader} from "../Common/Preloader";
+import {Preloader} from "../Common/Preloader/Preloader";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 

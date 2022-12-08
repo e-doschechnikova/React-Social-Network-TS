@@ -9,7 +9,7 @@ import {Setting} from "./components/Setting/Setting";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
-import {Login} from "./components/Login/Login";
+import Login from "./components/Login/Login";
 
 
 const App = () => {

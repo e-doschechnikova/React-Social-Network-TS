@@ -7,10 +7,10 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
     return <form onSubmit={props.handleSubmit}>
         <div>
-            <Field placeholder={"login"} component={Input} name={"login"} validate={[required]}/>
+            <Field placeholder={"email"} component={Input} name={"email"} validate={[required]}/>
         </div>
         <div>
-            <Field placeholder={"password"} component={Input} name={"password"} validate={[required]}/>
+            <Field placeholder={"password"} component={Input} name={"password"} validate={[required]} type={"password"}/>
         </div>
         <div>
             <Field type={"checkbox"} component={"input"} name={"rememberMe"}/> remember me
@@ -25,7 +25,7 @@ export const LoginReduxForm = reduxForm<FormDataType>({form: "login"})(LoginForm
 
 ///----------- type -----------\\\
 export type FormDataType = {
-    login: string,
+    email: string,
     password: string,
     rememberMe: boolean
 }

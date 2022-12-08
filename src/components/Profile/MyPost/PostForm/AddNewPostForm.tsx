@@ -7,6 +7,7 @@ import {Textarea} from "../../../Common/FormsControls/FormsControls";
 const maxLength10 = maxLengthTC(10)
 
 export const AddNewPostForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
+
     return <form onSubmit={props.handleSubmit}>
         <div>
             <Field name={"newPostText"} component={Textarea} className={styles.textForm} placeholder={'write a post'}

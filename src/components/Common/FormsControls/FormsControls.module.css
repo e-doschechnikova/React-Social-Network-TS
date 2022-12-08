@@ -1,0 +1,16 @@
+.formControl {
+
+}
+
+.input {
+    border: 1px black solid;
+}
+
+.errorInput {
+    border: 1px solid crimson;
+}
+
+
+.someError {
+    color: crimson;
+}

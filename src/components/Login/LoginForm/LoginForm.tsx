@@ -2,6 +2,7 @@ import React from "react";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Input} from "../../Common/FormsControls/FormsControls";
 import {required} from "../../../utils/validators/validators";
+import style from "../../Common/FormsControls/FormsControls.module.css"
 
 export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
@@ -10,11 +11,13 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
             <Field placeholder={"email"} component={Input} name={"email"} validate={[required]}/>
         </div>
         <div>
-            <Field placeholder={"password"} component={Input} name={"password"} validate={[required]} type={"password"}/>
+            <Field placeholder={"password"} component={Input} name={"password"} validate={[required]}
+                   type={"password"}/>
         </div>
         <div>
             <Field type={"checkbox"} component={"input"} name={"rememberMe"}/> remember me
         </div>
+        <div className={style.formSummaryError}>ERROR</div>
         <div>
             <button>Login</button>
         </div>

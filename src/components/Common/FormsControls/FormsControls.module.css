@@ -14,3 +14,9 @@
 .someError {
     color: crimson;
 }
+
+.formSummaryError {
+    border: 1px solid crimson;
+    padding: 5px;
+    color: crimson;
+}

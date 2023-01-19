@@ -1,12 +1,10 @@
 <div align="center">
 
-# Разработка социальной сети (TS, React, Redux, Axios). 
-# Social network development (TS, React, Redux, Axios).
+# Разработка социальной сети (TS, React, Redux, Axios). <br/> Social network development (TS, React, Redux, Axios).
 
 <div align="left">
 
-## Реализация Flux круговорота. Взаимодействие с сервером, создание запросов. Доступные действия на проекте: 
-## Implementation of the Flux Cycle. Interaction with the server, creating requests. Available actions on the project:
+## Реализация Flux круговорота. Взаимодействие с сервером, создание запросов. Доступные действия на проекте: <br/> Implementation of the Flux Cycle. Interaction with the server, creating requests. Available actions on the project:
 
 <ul>
   <li> логинизация (с валидацией) / login (with validation); </li>

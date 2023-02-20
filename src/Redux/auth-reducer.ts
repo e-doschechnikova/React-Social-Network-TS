@@ -40,13 +40,13 @@ export const getAuthUserDataTC = (): AppThunk => (dispatch) => {
         })
 }
 export const loginTC = (email: string, password: string, rememberMe: boolean): AppThunk => (dispatch) => {
-    let action = stopSubmit("login", {email: "Email is wrong"})
-    dispatch(action)
-    return
     authAPI.login(email, password, rememberMe)
         .then(response => {
             if (response.data.resultCode === 0) {
                 dispatch(getAuthUserDataTC())
+            } else {
+                let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error"
+                dispatch(stopSubmit("login", {_error: message}))
             }
         })
 }

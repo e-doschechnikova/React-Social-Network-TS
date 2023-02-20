@@ -5,11 +5,11 @@ const SEND_MESSAGE = "SEND-MESSAGE";
 
 const initialState: DialogPageStateType = {
     dialogs: [
-        {id: v1(), name: "Lama Iliya"},
+        {id: v1(), name: "Lama Lapa"},
         {id: v1(), name: "Lama Mama"},
         {id: v1(), name: "Lama Papa"},
-        {id: v1(), name: "Lama Ira"},
-        {id: v1(), name: "Lama Egor"},
+        {id: v1(), name: "Lama Pipa"},
+        {id: v1(), name: "Lama Lima"},
     ],
     messages: [
         {id: v1(), message: "Hi"},
